@@ -128,11 +128,20 @@
   .langswitch{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .lang-btn{
     appearance:none;border:0;background:transparent;cursor:pointer;
-    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
-    padding:.4rem .7rem;color:var(--ink-faint);transition:color .18s,background .18s;
+    display:inline-flex;align-items:center;gap:.42rem;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+    padding:.38rem .62rem;color:var(--ink-faint);
+    transition:color .18s,background .18s;
   }
   .lang-btn:hover{color:var(--ink)}
   .lang-btn[aria-pressed="true"]{background:var(--amber-soft);color:var(--amber)}
+  .lang-btn svg{
+    width:16px;height:11px;display:block;border-radius:1px;
+    box-shadow:0 0 0 1px var(--line);
+    opacity:.5;filter:saturate(.45);transition:opacity .18s,filter .18s;
+  }
+  .lang-btn[aria-pressed="true"] svg,
+  .lang-btn:hover svg{opacity:1;filter:none}
 
   .controls{display:flex;align-items:center;gap:.6rem}
   .theme-btn{
@@ -443,8 +452,36 @@
     </nav>
     <div class="controls">
       <div class="langswitch" role="group" aria-label="Language">
-        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-btn" data-lang="sk" aria-pressed="false">SK</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="true">
+          <svg viewBox="0 0 24 16" aria-hidden="true">
+            <clipPath id="fl-uk"><rect width="24" height="16" rx="1"></rect></clipPath>
+            <g clip-path="url(#fl-uk)">
+              <rect width="24" height="16" fill="#012169"></rect>
+              <path d="M0,0 L24,16 M24,0 L0,16" stroke="#FFF" stroke-width="3.4"></path>
+              <path d="M0,0 L24,16 M24,0 L0,16" stroke="#C8102E" stroke-width="1.9"></path>
+              <path d="M12,0 V16 M0,8 H24" stroke="#FFF" stroke-width="5.4"></path>
+              <path d="M12,0 V16 M0,8 H24" stroke="#C8102E" stroke-width="3.2"></path>
+            </g>
+          </svg>
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" data-lang="sk" aria-pressed="false">
+          <svg viewBox="0 0 24 16" aria-hidden="true">
+            <clipPath id="fl-sk"><rect width="24" height="16" rx="1"></rect></clipPath>
+            <g clip-path="url(#fl-sk)">
+              <rect width="24" height="16" fill="#FFF"></rect>
+              <rect y="5.33" width="24" height="5.34" fill="#0B4EA2"></rect>
+              <rect y="10.67" width="24" height="5.33" fill="#EE1C25"></rect>
+              <path d="M4.3,3.1 H10.7 V8.6 C10.7,11.3 7.5,12.9 7.5,12.9 C7.5,12.9 4.3,11.3 4.3,8.6 Z"
+                    fill="#EE1C25" stroke="#FFF" stroke-width="0.75"></path>
+              <path d="M6.9,4.4 H8.1 V10.8 H6.9 Z M5.9,5.9 H9.1 V7.0 H5.9 Z M5.3,7.8 H9.7 V8.9 H5.3 Z"
+                    fill="#FFF"></path>
+              <path d="M4.6,11.4 C5.3,10.2 6.2,10.4 6.5,11.4 C6.8,10.1 8.2,10.1 8.5,11.4 C8.8,10.4 9.7,10.2 10.4,11.4 Z"
+                    fill="#0B4EA2"></path>
+            </g>
+          </svg>
+          <span>SK</span>
+        </button>
       </div>
       <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light theme" title="Switch to light theme">
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -918,8 +955,8 @@ HAVING COUNT(*) &gt; 0;
     b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); });
   });
 
-  var nav = (navigator.language || '').toLowerCase();
-  apply(nav.indexOf('sk') === 0 || nav.indexOf('cs') === 0 ? 'sk' : 'en');
+  /* English always loads first, whoever the visitor is — Slovak is one click away. */
+  apply('en');
 
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());
