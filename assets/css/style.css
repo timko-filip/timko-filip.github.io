@@ -23,23 +23,23 @@
   }
 
   :root[data-ft-theme="light"]{
-    --ground:#F3F6F8;
-    --surface:#FFFFFF;
-    --raised:#E9EFF3;
-    --line:#C9D6DF;
-    --line-soft:#DFE7EC;
-    --ink:#0E1720;
-    --ink-dim:#4B5F70;
-    --ink-faint:#5F7284;
-    --amber:#9A5C0D;
-    --amber-hi:#7E4B0A;
-    --amber-soft:rgba(154,92,13,.10);
-    --teal:#1F6E82;
-    --on-accent:#FFFFFF;
-    --topbar-bg:rgba(243,246,248,.85);
-    --ring:rgba(169,102,15,.10);
-    --shadow:rgba(15,30,45,.14);
-    --trace-opacity:.42;
+    --ground:#DDE5EC;
+    --surface:#E9EFF4;
+    --raised:#D1DBE4;
+    --line:#AFC0CD;
+    --line-soft:#C7D3DD;
+    --ink:#0E1821;
+    --ink-dim:#405366;
+    --ink-faint:#506374;
+    --amber:#8E550B;
+    --amber-hi:#77460A;
+    --amber-soft:rgba(142,85,11,.12);
+    --teal:#1B657A;
+    --on-accent:#F4F8FB;
+    --topbar-bg:rgba(221,229,236,.86);
+    --ring:rgba(142,85,11,.12);
+    --shadow:rgba(14,24,33,.16);
+    --trace-opacity:.45;
   }
 
   html{color-scheme:dark;scroll-behavior:smooth}
