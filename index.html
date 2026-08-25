@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Filip Timko — Salesforce Marketing Cloud consultant based in Kosice, Slovakia. Email and SMS journeys, AMPscript personalisation, Journey Builder automation.">
-<meta property="og:title" content="Filip Timko — Salesforce Marketing Cloud consultant">
-<meta property="og:description" content="Email and SMS journeys, AMPscript personalisation, Journey Builder automation.">
-<meta property="og:type" content="website">
+<meta name="description" content="Filip Timko - Salesforce Marketing Cloud Consultant / Developer at IBM, based in Kosice, Slovakia. Customer journeys, AMPscript, SQL segmentation, email, SMS and Viber campaigns.">
+<meta property="og:title" content="Filip Timko - Salesforce Marketing Cloud Consultant / Developer">
+<meta property="og:description" content="Customer journeys, AMPscript personalisation, SQL segmentation, and AI-assisted marketing automation.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://timko-filip.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0E13'/%3E%3Cpath d='M3 24 h8 c4 0 4 -16 8 -16 c4 0 4 8 10 8' fill='none' stroke='%23E39B3C' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
 </head>
@@ -108,11 +109,11 @@
     margin:0;text-wrap:balance;
   }
   .role{
-    font-family:var(--mono);font-size:clamp(.9rem,2vw,1.05rem);
+    font-family:var(--mono);font-size:clamp(.88rem,2vw,1.02rem);
     color:var(--amber);margin:1.1rem 0 0;letter-spacing:-.01em;
   }
   .lede{
-    max-width:34em;color:var(--ink-dim);font-size:1.09rem;
+    max-width:36em;color:var(--ink-dim);font-size:1.07rem;
     margin:1.7rem 0 0;text-wrap:pretty;
   }
 
@@ -136,16 +137,10 @@
     text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
   }
   .sec-head::after{content:"";flex:1;height:1px;background:var(--line-soft)}
-  h2{
-    font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;
-    letter-spacing:-.02em;margin:0;text-wrap:balance;
-  }
 
   .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
   .cell{background:var(--surface);padding:1.7rem}
-  .cell h3{
-    font-size:1.02rem;font-weight:600;margin:0 0 .6rem;letter-spacing:-.01em;
-  }
+  .cell h3{font-size:1.02rem;font-weight:600;margin:0 0 .6rem;letter-spacing:-.01em}
   .cell .tag{
     display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
     text-transform:uppercase;color:var(--teal);margin-bottom:.9rem;
@@ -153,49 +148,94 @@
   .cell p{margin:0;color:var(--ink-dim);font-size:.97rem;line-height:1.6}
 
   /* ---------- timeline ---------- */
-  .timeline{display:flex;flex-direction:column;gap:0}
+  .timeline{display:flex;flex-direction:column}
   .job{
-    display:grid;grid-template-columns:150px 1fr;gap:2rem;
-    padding:1.8rem 0;border-top:1px solid var(--line-soft);
+    display:grid;grid-template-columns:160px 1fr;gap:2rem;
+    padding:2rem 0;border-top:1px solid var(--line-soft);
   }
   .job:first-child{border-top:0;padding-top:0}
   .job-when{
     font-family:var(--mono);font-size:.78rem;color:var(--ink-faint);
-    letter-spacing:.04em;padding-top:.25rem;
+    letter-spacing:.03em;padding-top:.3rem;
   }
   .job-when .now{color:var(--amber)}
   .job h3{margin:0;font-size:1.12rem;font-weight:600;letter-spacing:-.01em}
-  .job .org{
-    font-family:var(--mono);font-size:.82rem;color:var(--teal);margin:.3rem 0 .8rem;
+  .job .org{font-family:var(--mono);font-size:.82rem;color:var(--teal);margin:.3rem 0 1rem}
+  .job ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .job li{
+    color:var(--ink-dim);font-size:.96rem;line-height:1.55;
+    padding-left:1.15rem;position:relative;
   }
-  .job p{margin:0;color:var(--ink-dim);font-size:.97rem}
+  .job li::before{
+    content:"";position:absolute;left:0;top:.68em;
+    width:5px;height:1px;background:var(--amber);
+  }
+  .subrole{
+    margin-top:1.4rem;padding-top:1.2rem;border-top:1px dashed var(--line);
+  }
+  .subrole .sub-title{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--amber);margin:0 0 .8rem;
+  }
+
+  /* ---------- selected work ---------- */
+  .works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+  .work{
+    background:var(--surface);border:1px solid var(--line-soft);
+    padding:1.7rem;border-radius:2px;display:flex;flex-direction:column;gap:.7rem;
+  }
+  .work .where{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--teal);
+  }
+  .work h3{margin:0;font-size:1.06rem;font-weight:600;letter-spacing:-.01em}
+  .work p{margin:0;color:var(--ink-dim);font-size:.96rem;line-height:1.6}
+  .work .stack{
+    margin-top:auto;padding-top:.6rem;
+    font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);
+  }
 
   /* ---------- certs ---------- */
-  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
   .cert{
     background:var(--surface);border:1px solid var(--line-soft);
-    border-left:2px solid var(--amber);padding:1.3rem 1.4rem;border-radius:2px;
+    border-left:2px solid var(--amber);padding:1.25rem 1.35rem;border-radius:2px;
   }
   .cert .issuer{
-    font-family:var(--mono);font-size:.69rem;letter-spacing:.16em;
+    font-family:var(--mono);font-size:.69rem;letter-spacing:.15em;
     text-transform:uppercase;color:var(--ink-faint);
   }
-  .cert h3{font-size:1rem;font-weight:600;margin:.55rem 0 .5rem;line-height:1.35}
-  .cert .when{font-family:var(--mono);font-size:.78rem;color:var(--teal)}
-  .cert.pending{border-left-color:var(--line);opacity:.72}
-  .cert.pending .when{color:var(--ink-faint)}
+  .cert h3{font-size:.99rem;font-weight:600;margin:.5rem 0 .45rem;line-height:1.35}
+  .cert .when{font-family:var(--mono);font-size:.78rem;color:var(--teal);margin:0}
 
   /* ---------- education ---------- */
-  .edu{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
-  .edu h3{margin:0 0 .4rem;font-size:1.12rem;font-weight:600}
-  .edu .org{font-family:var(--mono);font-size:.82rem;color:var(--teal);margin:0 0 1rem}
-  .edu p{margin:0 0 1rem;color:var(--ink-dim);font-size:.97rem}
-  .pullquote{
-    border-left:2px solid var(--line);padding-left:1.3rem;
-    color:var(--ink-dim);font-size:.97rem;
+  .edu-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:3rem}
+  .degrees{display:flex;flex-direction:column;gap:1.8rem}
+  .degree h3{margin:0;font-size:1.06rem;font-weight:600;letter-spacing:-.01em}
+  .degree .org{font-family:var(--mono);font-size:.8rem;color:var(--teal);margin:.3rem 0 .55rem}
+  .degree .field{margin:0 0 .6rem;color:var(--ink-dim);font-size:.96rem}
+  .degree .years{
+    font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);
+    letter-spacing:.03em;display:block;margin-bottom:.5rem;
   }
+  .awards{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+  .award{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;
+    border:1px solid var(--amber);color:var(--amber);
+    background:var(--amber-soft);border-radius:2px;padding:.25rem .55rem;
+  }
+  .pullquote{
+    border-left:2px solid var(--line);padding-left:1.4rem;
+    color:var(--ink-dim);font-size:.98rem;align-self:start;
+  }
+  .pullquote p{margin:0}
 
   /* ---------- chips ---------- */
+  .chipsets{display:flex;flex-direction:column;gap:1.6rem}
+  .chipset .set-label{
+    font-family:var(--mono);font-size:.71rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin:0 0 .8rem;
+  }
   .chips{display:flex;flex-wrap:wrap;gap:.5rem}
   .chip{
     font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;
@@ -203,24 +243,13 @@
     color:var(--ink-dim);background:var(--surface);
   }
 
-  /* ---------- projects placeholder ---------- */
-  .soon{
-    border:1px dashed var(--line);border-radius:3px;
-    padding:2.6rem 1.8rem;text-align:center;background:var(--surface);
-  }
-  .soon .tag{
-    font-family:var(--mono);font-size:.71rem;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--amber);
-  }
-  .soon p{margin:.9rem auto 0;color:var(--ink-dim);max-width:38em;font-size:.97rem}
-
   /* ---------- contact ---------- */
-  .contact-grid{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-start}
-  .contact-grid p{margin:0;color:var(--ink-dim);max-width:30em}
-  .contact-list{display:flex;flex-direction:column;gap:.55rem;font-family:var(--mono);font-size:.88rem}
+  .contact-grid{display:flex;flex-wrap:wrap;gap:3rem;align-items:flex-start}
+  .contact-grid > p{margin:0;color:var(--ink-dim);max-width:28em}
+  .contact-list{display:flex;flex-direction:column;gap:.6rem;font-family:var(--mono);font-size:.87rem}
   .contact-list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .18s,color .18s}
   .contact-list a:hover{color:var(--amber);border-color:var(--amber)}
-  .contact-list span.k{color:var(--ink-faint);margin-right:.6rem}
+  .contact-list span.k{color:var(--ink-faint);display:inline-block;min-width:5.5rem}
 
   footer{padding:2.2rem 0 3rem}
   footer .wrap{
@@ -228,15 +257,9 @@
     font-family:var(--mono);font-size:.73rem;color:var(--ink-faint);letter-spacing:.04em;
   }
 
-  /* ---------- placeholders to fill in ---------- */
-  .ph{
-    color:var(--amber);border-bottom:1px dashed var(--amber);
-    padding-bottom:1px;font-style:normal;
-  }
-
-  @media (max-width:720px){
-    .job{grid-template-columns:1fr;gap:.6rem}
-    .edu{grid-template-columns:1fr;gap:2rem}
+  @media (max-width:760px){
+    .job{grid-template-columns:1fr;gap:.7rem}
+    .edu-grid{grid-template-columns:1fr;gap:2.2rem}
     body{font-size:16px}
   }
 
@@ -267,10 +290,11 @@
     <div class="wrap hero-inner">
       <p class="eyebrow" data-en="Košice · Slovakia" data-sk="Košice · Slovensko">Košice · Slovakia</p>
       <h1>Filip Timko</h1>
-      <p class="role" data-en="Salesforce Marketing Cloud consultant" data-sk="Salesforce Marketing Cloud konzultant">Salesforce Marketing Cloud consultant</p>
-      <p class="lede" data-en="I build the campaigns enterprise brands run at scale — email and SMS journeys, AMPscript-driven personalisation, and the segmentation logic underneath them. Engineer by training, marketing technologist by practice." data-sk="Staviam kampane, ktoré enterprise značky púšťajú vo veľkom — e-mailové a SMS journeys, personalizáciu cez AMPscript a segmentačnú logiku pod nimi. Inžinier vzdelaním, marketingový technológ praxou.">I build the campaigns enterprise brands run at scale — email and SMS journeys, AMPscript-driven personalisation, and the segmentation logic underneath them. Engineer by training, marketing technologist by practice.</p>
+      <p class="role" data-en="Salesforce Marketing Cloud Consultant / Developer — IBM" data-sk="Salesforce Marketing Cloud konzultant / developer — IBM">Salesforce Marketing Cloud Consultant / Developer — IBM</p>
+      <p class="lede" data-en="I deliver CRM and marketing automation for a global enterprise client: customer journeys, AMPscript-personalised email, SMS and Viber campaigns, and the SQL that decides who receives what. Process-engineering background, now pointed at AI-assisted marketing automation." data-sk="Dodávam CRM a marketingovú automatizáciu pre globálneho enterprise klienta: zákaznícke journeys, e-maily personalizované cez AMPscript, SMS a Viber kampane a SQL, ktoré rozhoduje, kto čo dostane. Procesno-inžinierske zázemie, dnes namierené na marketingovú automatizáciu s podporou AI.">I deliver CRM and marketing automation for a global enterprise client: customer journeys, AMPscript-personalised email, SMS and Viber campaigns, and the SQL that decides who receives what. Process-engineering background, now pointed at AI-assisted marketing automation.</p>
       <div class="actions">
         <a class="btn btn-primary" href="mailto:timko365@gmail.com" data-en="Get in touch" data-sk="Napíšte mi">Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/filip-timko-015a31212/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="#experience" data-en="See experience" data-sk="Pozrieť prax">See experience</a>
       </div>
     </div>
@@ -284,23 +308,23 @@
       <div class="grid-2">
         <div class="cell">
           <span class="tag">Campaigns</span>
-          <h3 data-en="Email &amp; SMS delivery" data-sk="E-mail a SMS delivery">Email &amp; SMS delivery</h3>
-          <p data-en="Campaigns for CZ and SK markets from brief to send — build, QA, deployment and post-send checks, on deadlines that do not move." data-sk="Kampane pre CZ a SK trh od zadania po odoslanie — príprava, QA, nasadenie a kontroly po odoslaní, v termínoch, ktoré sa neposúvajú.">Campaigns for CZ and SK markets from brief to send — build, QA, deployment and post-send checks, on deadlines that do not move.</p>
+          <h3 data-en="Multichannel delivery" data-sk="Multikanálový delivery">Multichannel delivery</h3>
+          <p data-en="Email, SMS and Viber campaigns for a global enterprise client — build, QA, production delivery, and handling what breaks at send time." data-sk="E-mailové, SMS a Viber kampane pre globálneho enterprise klienta — príprava, QA, produkčné nasadenie a riešenie toho, čo sa pokazí pri odosielaní.">Email, SMS and Viber campaigns for a global enterprise client — build, QA, production delivery, and handling what breaks at send time.</p>
         </div>
         <div class="cell">
           <span class="tag">Automation</span>
           <h3 data-en="Journeys &amp; orchestration" data-sk="Journeys a orchestrácia">Journeys &amp; orchestration</h3>
-          <p data-en="Journey Builder flows, triggered and behavioural sends, Automation Studio schedules, and the data extensions that feed them." data-sk="Toky v Journey Builderi, triggered a behaviorálne sendy, automatizácie v Automation Studiu a dátové extensiony, ktoré ich napĺňajú.">Journey Builder flows, triggered and behavioural sends, Automation Studio schedules, and the data extensions that feed them.</p>
+          <p data-en="Customer journeys built and optimised in Journey Builder, scheduled work in Automation Studio, and audience segmentation driven by SQL over data extensions." data-sk="Zákaznícke journeys stavané a optimalizované v Journey Builderi, plánované behy v Automation Studiu a segmentácia publík riadená cez SQL nad dátovými extensionmi.">Customer journeys built and optimised in Journey Builder, scheduled work in Automation Studio, and audience segmentation driven by SQL over data extensions.</p>
         </div>
         <div class="cell">
-          <span class="tag">Personalisation</span>
-          <h3 data-en="AMPscript &amp; dynamic content" data-sk="AMPscript a dynamický obsah">AMPscript &amp; dynamic content</h3>
-          <p data-en="Scripting that makes a single send behave like thousands — conditional blocks, lookups into data extensions, and content that adapts per recipient." data-sk="Skriptovanie, vďaka ktorému sa jeden send správa ako tisíce — podmienené bloky, lookupy do dátových extensionov a obsah, ktorý sa mení podľa príjemcu.">Scripting that makes a single send behave like thousands — conditional blocks, lookups into data extensions, and content that adapts per recipient.</p>
+          <span class="tag">Code</span>
+          <h3 data-en="AMPscript, SQL &amp; HTML" data-sk="AMPscript, SQL a HTML">AMPscript, SQL &amp; HTML</h3>
+          <p data-en="Dynamic content through AMPscript, responsive HTML email templates that survive real inboxes, and queries that turn raw CRM data into a usable audience." data-sk="Dynamický obsah cez AMPscript, responzívne HTML e-mailové šablóny, ktoré prežijú reálne schránky, a dotazy, ktoré z hrubých CRM dát urobia použiteľné publikum.">Dynamic content through AMPscript, responsive HTML email templates that survive real inboxes, and queries that turn raw CRM data into a usable audience.</p>
         </div>
         <div class="cell">
-          <span class="tag">Platform</span>
-          <h3 data-en="Ecosystem &amp; mentoring" data-sk="Ekosystém a mentoring">Ecosystem &amp; mentoring</h3>
-          <p data-en="Touchpoints across Salesforce Experience Cloud, work inside IBM Consulting Advantage, and reviewing and mentoring colleagues on their builds." data-sk="Napojenia na Salesforce Experience Cloud, práca v rámci IBM Consulting Advantage a mentoring a review buildov kolegov.">Touchpoints across Salesforce Experience Cloud, work inside IBM Consulting Advantage, and reviewing and mentoring colleagues on their builds.</p>
+          <span class="tag">AI</span>
+          <h3 data-en="AI-assisted operations" data-sk="Operatíva s podporou AI">AI-assisted operations</h3>
+          <p data-en="Internal AI assistants for Marketing Cloud workflows — automating SQL validation, AMPscript generation and team onboarding, with designed prompts and knowledge bases behind them." data-sk="Interní AI asistenti pre Marketing Cloud workflow — automatizácia validácie SQL, generovania AMPscriptu a onboardingu tímu, s navrhnutými promptami a knowledge bázami v pozadí.">Internal AI assistants for Marketing Cloud workflows — automating SQL validation, AMPscript generation and team onboarding, with designed prompts and knowledge bases behind them.</p>
         </div>
       </div>
     </div>
@@ -312,21 +336,76 @@
         <span class="sec-label" data-en="Experience" data-sk="Prax">Experience</span>
       </div>
       <div class="timeline">
+
         <article class="job">
-          <div class="job-when"><span class="ph">20XX</span> — <span class="now" data-en="present" data-sk="súčasnosť">present</span></div>
+          <div class="job-when">02.2025 — <span class="now" data-en="present" data-sk="súčasnosť">present</span></div>
           <div>
-            <h3 data-en="Salesforce Marketing Cloud Consultant" data-sk="Salesforce Marketing Cloud konzultant">Salesforce Marketing Cloud Consultant</h3>
-            <p class="org">IBM</p>
-            <p data-en="Delivering email and SMS campaigns for a global FMCG client across the Czech and Slovak markets. Day-to-day: journey design and build, AMPscript personalisation, data extension management, QA and deployment — plus reviewing colleagues&#8217; work and mentoring newer team members." data-sk="Dodávam e-mailové a SMS kampane pre globálneho FMCG klienta na českom a slovenskom trhu. Bežná agenda: návrh a build journeys, personalizácia cez AMPscript, správa dátových extensionov, QA a nasadenie — plus review práce kolegov a mentoring nováčikov v tíme.">Delivering email and SMS campaigns for a global FMCG client across the Czech and Slovak markets. Day-to-day: journey design and build, AMPscript personalisation, data extension management, QA and deployment — plus reviewing colleagues&#8217; work and mentoring newer team members.</p>
+            <h3 data-en="Salesforce Marketing Cloud Consultant / Developer" data-sk="Salesforce Marketing Cloud konzultant / developer">Salesforce Marketing Cloud Consultant / Developer</h3>
+            <p class="org">IBM Slovensko, s.r.o.</p>
+            <ul>
+              <li data-en="Deliver Marketing Cloud solutions for a global enterprise client." data-sk="Dodávam riešenia v Marketing Cloude pre globálneho enterprise klienta.">Deliver Marketing Cloud solutions for a global enterprise client.</li>
+              <li data-en="Build and optimise customer journeys in Journey Builder and Automation Studio." data-sk="Staviam a optimalizujem zákaznícke journeys v Journey Builderi a Automation Studiu.">Build and optimise customer journeys in Journey Builder and Automation Studio.</li>
+              <li data-en="Develop SQL solutions for audience segmentation and campaign automation." data-sk="Vyvíjam SQL riešenia pre segmentáciu publík a automatizáciu kampaní.">Develop SQL solutions for audience segmentation and campaign automation.</li>
+              <li data-en="Create personalised email experiences using AMPscript and dynamic content." data-sk="Tvorím personalizované e-mailové zážitky cez AMPscript a dynamický obsah.">Create personalised email experiences using AMPscript and dynamic content.</li>
+              <li data-en="Build responsive HTML email templates for CRM campaigns." data-sk="Staviam responzívne HTML e-mailové šablóny pre CRM kampane.">Build responsive HTML email templates for CRM campaigns.</li>
+              <li data-en="Work with stakeholders to translate business requirements into working solutions." data-sk="So stakeholdermi prekladám biznis požiadavky do funkčných riešení.">Work with stakeholders to translate business requirements into working solutions.</li>
+              <li data-en="Support Email, SMS and Viber campaign delivery, including production issues." data-sk="Podporujem delivery e-mailových, SMS a Viber kampaní vrátane produkčných incidentov.">Support Email, SMS and Viber campaign delivery, including production issues.</li>
+            </ul>
+            <div class="subrole">
+              <p class="sub-title" data-en="AI assistant development · IBM Consulting Advantage" data-sk="Vývoj AI asistentov · IBM Consulting Advantage">AI assistant development · IBM Consulting Advantage</p>
+              <ul>
+                <li data-en="Developed internal AI assistants for Marketing Cloud workflows, automating SQL validation, AMPscript creation and team onboarding." data-sk="Vyvinul som interných AI asistentov pre Marketing Cloud workflow — automatizujú validáciu SQL, tvorbu AMPscriptu a onboarding tímu.">Developed internal AI assistants for Marketing Cloud workflows, automating SQL validation, AMPscript creation and team onboarding.</li>
+                <li data-en="Designed prompts and knowledge bases to improve efficiency and consistency across CRM operations." data-sk="Navrhol som prompty a knowledge bázy pre vyššiu efektivitu a konzistentnosť CRM operatívy.">Designed prompts and knowledge bases to improve efficiency and consistency across CRM operations.</li>
+              </ul>
+            </div>
           </div>
         </article>
+
         <article class="job">
-          <div class="job-when"><span class="ph">20XX — 20XX</span></div>
+          <div class="job-when">06.2024 — 01.2025</div>
           <div>
-            <h3 class="ph" data-en="Previous role — title" data-sk="Predchádzajúca pozícia — názov">Previous role — title</h3>
-            <p class="org ph" data-en="Company" data-sk="Firma">Company</p>
-            <p data-en="Add one or two sentences here: what you owned, what you built, and one result you can point to." data-sk="Doplň jednu-dve vety: čo si mal na starosti, čo si postavil a jeden konkrétny výsledok.">Add one or two sentences here: what you owned, what you built, and one result you can point to.</p>
+            <h3 data-en="Intern — Energy Department" data-sk="Stážista — oddelenie energetiky">Intern — Energy Department</h3>
+            <p class="org">U. S. Steel Košice, s.r.o.</p>
+            <ul>
+              <li data-en="Produced weekly analytical reports covering European electricity and natural gas markets." data-sk="Pripravoval som týždenné analytické reporty o európskych trhoch s elektrinou a zemným plynom.">Produced weekly analytical reports covering European electricity and natural gas markets.</li>
+              <li data-en="Developed internal web applications in PHP, SQL, HTML and Bootstrap to streamline reporting." data-sk="Vyvíjal som interné webové aplikácie v PHP, SQL, HTML a Bootstrape na zefektívnenie reportingu.">Developed internal web applications in PHP, SQL, HTML and Bootstrap to streamline reporting.</li>
+            </ul>
           </div>
+        </article>
+
+        <article class="job">
+          <div class="job-when">07.2022 — 06.2024</div>
+          <div>
+            <h3 data-en="Intern — Maintenance Department" data-sk="Stážista — oddelenie údržby">Intern — Maintenance Department</h3>
+            <p class="org">Marelli Kechnec Slovakia, s.r.o.</p>
+            <ul>
+              <li data-en="Supported maintenance operations through administrative and organisational work." data-sk="Podporoval som prevádzku údržby administratívnou a organizačnou agendou.">Supported maintenance operations through administrative and organisational work.</li>
+              <li data-en="Coordinated communication between maintenance teams and suppliers." data-sk="Koordinoval som komunikáciu medzi tímami údržby a dodávateľmi.">Coordinated communication between maintenance teams and suppliers.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Selected work" data-sk="Vybrané projekty">Selected work</span>
+      </div>
+      <div class="works">
+        <article class="work">
+          <span class="where">IBM Consulting Advantage</span>
+          <h3 data-en="AI assistants for Marketing Cloud" data-sk="AI asistenti pre Marketing Cloud">AI assistants for Marketing Cloud</h3>
+          <p data-en="Internal assistants that validate SQL, generate AMPscript and walk new team members through onboarding. I designed the prompts and the knowledge bases behind them — the goal was consistency across CRM operations, not one-off answers." data-sk="Interní asistenti, ktorí validujú SQL, generujú AMPscript a prevedú nováčikov onboardingom. Navrhol som prompty aj knowledge bázy za nimi — cieľom bola konzistentnosť CRM operatívy, nie jednorazové odpovede.">Internal assistants that validate SQL, generate AMPscript and walk new team members through onboarding. I designed the prompts and the knowledge bases behind them — the goal was consistency across CRM operations, not one-off answers.</p>
+          <p class="stack">AI assistants · AMPscript · SQL · knowledge bases</p>
+        </article>
+        <article class="work">
+          <span class="where">U. S. Steel Košice</span>
+          <h3 data-en="Energy market reporting tools" data-sk="Nástroje na reporting energetických trhov">Energy market reporting tools</h3>
+          <p data-en="Internal web applications that took the manual steps out of weekly reporting on European electricity and natural gas markets — the same reports I was writing by hand until then." data-sk="Interné webové aplikácie, ktoré odstránili manuálne kroky z týždenného reportingu o európskych trhoch s elektrinou a zemným plynom — z tých istých reportov, ktoré som dovtedy robil ručne.">Internal web applications that took the manual steps out of weekly reporting on European electricity and natural gas markets — the same reports I was writing by hand until then.</p>
+          <p class="stack">PHP · SQL · HTML · Bootstrap</p>
         </article>
       </div>
     </div>
@@ -340,18 +419,28 @@
       <div class="certs">
         <div class="cert">
           <span class="issuer">Salesforce</span>
-          <h3 data-en="Certified Marketing Cloud Engagement Specialist" data-sk="Certified Marketing Cloud Engagement Specialist">Certified Marketing Cloud Engagement Specialist</h3>
-          <p class="when" data-en="August 2026 · formerly Email Specialist" data-sk="August 2026 · pôvodne Email Specialist">August 2026 · formerly Email Specialist</p>
+          <h3>Marketing Cloud Engagement Specialist</h3>
+          <p class="when">07 / 2026</p>
+        </div>
+        <div class="cert">
+          <span class="issuer">Cognitive Class</span>
+          <h3>SQL and Relational Databases 101</h3>
+          <p class="when">03 / 2026</p>
         </div>
         <div class="cert">
           <span class="issuer">Salesforce</span>
-          <h3 data-en="Certified AI Associate" data-sk="Certified AI Associate">Certified AI Associate</h3>
-          <p class="when" data-en="February 2025" data-sk="Február 2025">February 2025</p>
+          <h3>Marketing Cloud Engagement Foundations</h3>
+          <p class="when">09 / 2025</p>
         </div>
-        <div class="cert pending">
+        <div class="cert">
+          <span class="issuer">AGH University of Krakow</span>
+          <h3 data-en="Modern Technology and Management in Industry" data-sk="Modern Technology and Management in Industry">Modern Technology and Management in Industry</h3>
+          <p class="when">05 / 2025</p>
+        </div>
+        <div class="cert">
           <span class="issuer">Salesforce</span>
-          <h3 class="ph" data-en="Next certification — architect level" data-sk="Ďalšia certifikácia — architect level">Next certification — architect level</h3>
-          <p class="when" data-en="In preparation" data-sk="V príprave">In preparation</p>
+          <h3>Certified AI Associate</h3>
+          <p class="when">02 / 2025</p>
         </div>
       </div>
     </div>
@@ -360,14 +449,39 @@
   <section id="education">
     <div class="wrap">
       <div class="sec-head">
-        <span class="sec-label" data-en="Background" data-sk="Vzdelanie">Background</span>
+        <span class="sec-label" data-en="Education" data-sk="Vzdelanie">Education</span>
       </div>
-      <div class="edu">
-        <div>
-          <h3 data-en="Engineering degree (Ing.)" data-sk="Inžinierske štúdium (Ing.)">Engineering degree (Ing.)</h3>
-          <p class="org ph" data-en="University — faculty, years" data-sk="Univerzita — fakulta, roky">University — faculty, years</p>
-          <p data-en="Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles." data-sk="Diplomová práca o diskrétnych pokročilých algoritmoch riadenia — MAC, DMC a IMC-PID — aplikovaných na laboratórnu pec: modelovanie systému, ladenie regulátorov a porovnanie, ako jednotlivé prístupy ustaľujú sústavu.">Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles.</p>
+      <div class="edu-grid">
+        <div class="degrees">
+
+          <div class="degree">
+            <span class="years">2024 — 2026</span>
+            <h3 data-en="Master's degree (Ing.) — Process Management for Raw Material Acquisition and Processing" data-sk="Inžinierske štúdium (Ing.) — Riadenie procesov získavania a spracovania surovín">Master's degree (Ing.) — Process Management for Raw Material Acquisition and Processing</h3>
+            <p class="org" data-en="Technical University of Košice · Faculty of Mining, Ecology, Management and Geotechnology" data-sk="Technická univerzita v Košiciach · Fakulta baníctva, ekológie, riadenia a geotechnológií">Technical University of Košice · Faculty of Mining, Ecology, Management and Geotechnology</p>
+            <p class="field" data-en="Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles. Alongside it: PLC programming, optimisation and process management." data-sk="Diplomová práca o diskrétnych pokročilých algoritmoch riadenia — MAC, DMC a IMC-PID — aplikovaných na laboratórnu pec: modelovanie sústavy, ladenie regulátorov a porovnanie ich ustaľovania. Popri tom: programovanie PLC, optimalizácia a riadenie procesov.">Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles. Alongside it: PLC programming, optimisation and process management.</p>
+            <div class="awards">
+              <span class="award" data-en="2nd place · Student Scientific Conference 2026" data-sk="2. miesto · ŠVOČ 2026">2nd place · Student Scientific Conference 2026</span>
+            </div>
+          </div>
+
+          <div class="degree">
+            <span class="years">2021 — 2024</span>
+            <h3 data-en="Bachelor's degree — Process Management" data-sk="Bakalárske štúdium — Riadenie procesov">Bachelor's degree — Process Management</h3>
+            <p class="org" data-en="Technical University of Košice · Faculty of Mining, Ecology, Management and Geotechnology" data-sk="Technická univerzita v Košiciach · Fakulta baníctva, ekológie, riadenia a geotechnológií">Technical University of Košice · Faculty of Mining, Ecology, Management and Geotechnology</p>
+            <p class="field" data-en="Programming in HTML, CSS, PHP and SQL, and building visualisations for PLC controllers — where the web work started." data-sk="Programovanie v HTML, CSS, PHP a SQL a tvorba vizualizácií pre PLC regulátory — tu sa začala práca s webom.">Programming in HTML, CSS, PHP and SQL, and building visualisations for PLC controllers — where the web work started.</p>
+            <div class="awards">
+              <span class="award" data-en="1st place · Student Scientific Conference 2024" data-sk="1. miesto · ŠVOČ 2024">1st place · Student Scientific Conference 2024</span>
+              <span class="award" data-en="ZSVTS Work Award 2024" data-sk="Cena ZSVTS za prácu 2024">ZSVTS Work Award 2024</span>
+            </div>
+          </div>
+
+          <div class="degree">
+            <span class="years">2015 — 2019</span>
+            <h3 data-en="Secondary School of Electrical Engineering, Košice — Industrial Informatics" data-sk="Stredná priemyselná škola elektrotechnická, Košice — priemyselná informatika">Secondary School of Electrical Engineering, Košice — Industrial Informatics</h3>
+          </div>
+
         </div>
+
         <div class="pullquote">
           <p data-en="Control engineering turned out to be unexpectedly good training for marketing automation. Both are feedback loops: you set a target, you measure what actually happens, and you tune the system until the response settles where you wanted it — without overshooting into the customer&#8217;s inbox." data-sk="Riadenie procesov sa ukázalo ako prekvapivo dobrá príprava na marketingovú automatizáciu. Oboje sú spätnoväzbové slučky: nastavíš cieľ, meriaš, čo sa naozaj deje, a ladíš systém, kým sa odozva neustáli tam, kde má — bez prekmitu do zákazníkovej schránky.">Control engineering turned out to be unexpectedly good training for marketing automation. Both are feedback loops: you set a target, you measure what actually happens, and you tune the system until the response settles where you wanted it — without overshooting into the customer&#8217;s inbox.</p>
         </div>
@@ -380,29 +494,38 @@
       <div class="sec-head">
         <span class="sec-label" data-en="Toolbox" data-sk="Nástroje">Toolbox</span>
       </div>
-      <div class="chips">
-        <span class="chip">Email Studio</span>
-        <span class="chip">Journey Builder</span>
-        <span class="chip">Automation Studio</span>
-        <span class="chip">Content Builder</span>
-        <span class="chip">AMPscript</span>
-        <span class="chip">Data Extensions</span>
-        <span class="chip">Mobile Studio / SMS</span>
-        <span class="chip">Experience Cloud</span>
-        <span class="chip">HTML &amp; CSS email</span>
-        <span class="chip ph" data-en="+ add your own" data-sk="+ doplň vlastné">+ add your own</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-label" data-en="Selected work" data-sk="Vybrané projekty">Selected work</span>
-      </div>
-      <div class="soon">
-        <span class="tag" data-en="In progress" data-sk="Pripravuje sa">In progress</span>
-        <p data-en="This is where side projects and automation experiments will live — the things built outside client work. Coming soon." data-sk="Sem prídu vlastné projekty a automatizačné experimenty — veci postavené mimo klientskej práce. Čoskoro.">This is where side projects and automation experiments will live — the things built outside client work. Coming soon.</p>
+      <div class="chipsets">
+        <div class="chipset">
+          <p class="set-label">Salesforce</p>
+          <div class="chips">
+            <span class="chip">Journey Builder</span>
+            <span class="chip">Automation Studio</span>
+            <span class="chip">Email Studio</span>
+            <span class="chip">Content Builder</span>
+            <span class="chip">Data Extensions</span>
+          </div>
+        </div>
+        <div class="chipset">
+          <p class="set-label" data-en="Development" data-sk="Vývoj">Development</p>
+          <div class="chips">
+            <span class="chip">AMPscript</span>
+            <span class="chip">SQL</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Bootstrap</span>
+          </div>
+        </div>
+        <div class="chipset">
+          <p class="set-label" data-en="Consulting" data-sk="Konzulting">Consulting</p>
+          <div class="chips">
+            <span class="chip" data-en="Stakeholder management" data-sk="Stakeholder management">Stakeholder management</span>
+            <span class="chip" data-en="Requirement analysis" data-sk="Analýza požiadaviek">Requirement analysis</span>
+            <span class="chip">Agile</span>
+            <span class="chip" data-en="Problem solving" data-sk="Riešenie problémov">Problem solving</span>
+            <span class="chip" data-en="Client communication" data-sk="Komunikácia s klientom">Client communication</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -413,11 +536,11 @@
         <span class="sec-label" data-en="Contact" data-sk="Kontakt">Contact</span>
       </div>
       <div class="contact-grid">
-        <p data-en="Open to conversations about Marketing Cloud work, consulting engagements, and interesting automation problems." data-sk="Rád sa pobavím o práci v Marketing Cloude, konzultačných projektoch a zaujímavých automatizačných problémoch.">Open to conversations about Marketing Cloud work, consulting engagements, and interesting automation problems.</p>
+        <p data-en="Open to conversations about Marketing Cloud work, client-facing Salesforce consulting, and AI-assisted marketing automation." data-sk="Rád sa pobavím o práci v Marketing Cloude, klientskom Salesforce konzultingu a marketingovej automatizácii s podporou AI.">Open to conversations about Marketing Cloud work, client-facing Salesforce consulting, and AI-assisted marketing automation.</p>
         <div class="contact-list">
           <div><span class="k">email</span><a href="mailto:timko365@gmail.com">timko365@gmail.com</a></div>
-          <div><span class="k">linkedin</span><a class="ph" href="#" data-en="add your profile URL" data-sk="doplň URL profilu">add your profile URL</a></div>
-          <div><span class="k">location</span><span data-en="Košice, Slovakia" data-sk="Košice, Slovensko">Košice, Slovakia</span></div>
+          <div><span class="k">linkedin</span><a href="https://www.linkedin.com/in/filip-timko-015a31212/" target="_blank" rel="noopener">filip-timko</a></div>
+          <div><span class="k" data-en="location" data-sk="lokalita">location</span><span data-en="Košice, Slovakia" data-sk="Košice, Slovensko">Košice, Slovakia</span></div>
         </div>
       </div>
     </div>
