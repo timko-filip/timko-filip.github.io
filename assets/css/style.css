@@ -366,24 +366,48 @@
   /* ---------- certs ---------- */
   .certs{display:flex;flex-direction:column}
   .cert{
-    display:grid;grid-template-columns:1fr auto;
-    gap:.2rem 2rem;align-items:baseline;
-    padding:1.05rem 0;border-top:1px solid var(--line-soft);
+    display:grid;grid-template-columns:48px 1fr auto;
+    column-gap:1.4rem;row-gap:.2rem;align-items:center;
+    padding:1rem 0;border-top:1px solid var(--line-soft);
+  }
+  .cert-badge{
+    grid-column:1;grid-row:1 / span 2;
+    width:48px;height:auto;display:block;align-self:center;
   }
   .cert h3{
-    order:1;grid-column:1;margin:0;
+    grid-column:2;grid-row:1;margin:0;align-self:end;
     font-size:1.02rem;font-weight:500;letter-spacing:-.01em;line-height:1.4;
   }
   .cert .when{
-    order:2;grid-column:2;grid-row:1;margin:0;justify-self:end;
+    grid-column:3;grid-row:1 / span 2;margin:0;justify-self:end;align-self:center;
     font-family:var(--mono);font-size:.79rem;color:var(--amber);
     font-variant-numeric:tabular-nums;white-space:nowrap;
   }
   .cert .issuer{
-    order:3;grid-column:1;
+    grid-column:2;grid-row:2;align-self:start;
     font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;
     text-transform:uppercase;color:var(--ink-faint);
   }
+
+  .cert .issuer a{
+    color:var(--ink-dim);text-decoration:none;
+    border-bottom:1px solid var(--line);padding-bottom:1px;
+    transition:color .18s,border-color .18s;
+  }
+  .cert .issuer a:hover{color:var(--amber);border-color:var(--amber)}
+
+  .cert-verify{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;
+    margin:1.7rem 0 0;padding-top:1.2rem;border-top:1px solid var(--line-soft);
+    font-family:var(--mono);font-size:.77rem;color:var(--ink-faint);
+  }
+  .cert-verify a{
+    color:var(--ink-dim);text-decoration:none;
+    border-bottom:1px solid var(--line);padding-bottom:1px;
+    transition:color .18s,border-color .18s;
+  }
+  .cert-verify a:hover{color:var(--amber);border-color:var(--amber)}
+  .cert-verify .sep{color:var(--line)}
 
   /* ---------- education ---------- */
   .edu-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:3rem}
