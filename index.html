@@ -17,7 +17,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 
+<script>
+  /* Applied before paint so a stored light preference does not flash dark first. */
+  try {
+    if (localStorage.getItem('ft-theme') === 'light') {
+      document.documentElement.setAttribute('data-ft-theme', 'light');
+    }
+  } catch (e) {}
+</script>
+
 <style>
+  /* Dark is the default identity of this page. The toggle opts into light. */
   :root{
     --ground:#0A0E13;
     --surface:#111820;
@@ -28,12 +38,41 @@
     --ink-dim:#94A6B8;
     --ink-faint:#63768A;
     --amber:#E39B3C;
+    --amber-hi:#F0AD50;
     --amber-soft:rgba(227,155,60,.14);
     --teal:#5AA9BC;
+    --on-accent:#12161B;
+    --topbar-bg:rgba(10,14,19,.82);
+    --ring:rgba(227,155,60,.07);
+    --shadow:rgba(0,0,0,.5);
+    --trace-opacity:.5;
     --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
     --wrap:min(1080px,100% - 3rem);
   }
+
+  :root[data-ft-theme="light"]{
+    --ground:#F3F6F8;
+    --surface:#FFFFFF;
+    --raised:#E9EFF3;
+    --line:#C9D6DF;
+    --line-soft:#DFE7EC;
+    --ink:#0E1720;
+    --ink-dim:#4B5F70;
+    --ink-faint:#5F7284;
+    --amber:#9A5C0D;
+    --amber-hi:#7E4B0A;
+    --amber-soft:rgba(154,92,13,.10);
+    --teal:#1F6E82;
+    --on-accent:#FFFFFF;
+    --topbar-bg:rgba(243,246,248,.85);
+    --ring:rgba(169,102,15,.10);
+    --shadow:rgba(15,30,45,.14);
+    --trace-opacity:.42;
+  }
+
+  html{color-scheme:dark;scroll-behavior:smooth}
+  html[data-ft-theme="light"]{color-scheme:light}
 
   *{box-sizing:border-box}
 
@@ -55,7 +94,7 @@
   /* ---------- header ---------- */
   .topbar{
     position:sticky;top:0;z-index:20;
-    background:rgba(10,14,19,.82);
+    background:var(--topbar-bg);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line-soft);
   }
@@ -67,8 +106,24 @@
   .mark{
     font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-dim);text-decoration:none;
+    white-space:nowrap;
   }
   .mark b{color:var(--ink);font-weight:500}
+
+  .nav{
+    display:flex;gap:1.15rem;flex:1;justify-content:center;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--ink-faint);text-decoration:none;
+    white-space:nowrap;padding:.3rem 0;
+    border-bottom:1px solid transparent;
+    transition:color .18s,border-color .18s;
+  }
+  .nav a:hover{color:var(--ink)}
+  .nav a.active{color:var(--amber);border-bottom-color:var(--amber)}
 
   .langswitch{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .lang-btn{
@@ -79,11 +134,25 @@
   .lang-btn:hover{color:var(--ink)}
   .lang-btn[aria-pressed="true"]{background:var(--amber-soft);color:var(--amber)}
 
+  .controls{display:flex;align-items:center;gap:.6rem}
+  .theme-btn{
+    appearance:none;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border-radius:999px;
+    border:1px solid var(--line);background:transparent;color:var(--ink-faint);
+    transition:color .18s,border-color .18s,background .18s;
+  }
+  .theme-btn:hover{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
+  .theme-btn svg{width:15px;height:15px;display:block}
+  .theme-btn .i-moon{display:none}
+  :root[data-ft-theme="light"] .theme-btn .i-moon{display:block}
+  :root[data-ft-theme="light"] .theme-btn .i-sun{display:none}
+
   /* ---------- hero ---------- */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
   .trace{
     position:absolute;inset:auto 0 0 0;height:min(62%,300px);
-    width:100%;opacity:.5;pointer-events:none;
+    width:100%;opacity:var(--trace-opacity);pointer-events:none;
   }
   .trace .curve{
     fill:none;stroke:var(--amber);stroke-width:2;
@@ -95,7 +164,18 @@
   .trace .axis{stroke:var(--line);stroke-width:1}
   @keyframes draw{to{stroke-dashoffset:0}}
 
-  .hero-inner{position:relative;z-index:1;padding:clamp(4rem,11vw,7.5rem) 0 clamp(6rem,14vw,9rem)}
+  .hero-inner{
+    position:relative;z-index:1;
+    padding:clamp(4rem,11vw,7.5rem) 0 clamp(6rem,14vw,9rem);
+    display:grid;grid-template-columns:minmax(0,1fr) auto;
+    gap:clamp(2rem,5vw,4rem);align-items:center;
+  }
+  .portrait{justify-self:end}
+  .portrait img{
+    display:block;width:180px;height:180px;border-radius:50%;
+    object-fit:cover;border:1px solid var(--line);
+    box-shadow:0 0 0 6px var(--ring), 0 18px 40px var(--shadow);
+  }
   .eyebrow{
     font-family:var(--mono);font-size:.75rem;letter-spacing:.18em;
     text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.4rem;
@@ -126,11 +206,15 @@
     transition:border-color .18s,background .18s,transform .18s;
   }
   .btn:hover{border-color:var(--amber);background:var(--amber-soft);transform:translateY(-1px)}
-  .btn-primary{background:var(--amber);border-color:var(--amber);color:#12161B;font-weight:500}
-  .btn-primary:hover{background:#f0ad50;border-color:#f0ad50}
+  .btn-primary{background:var(--amber);border-color:var(--amber);color:var(--on-accent);font-weight:500}
+  .btn-primary:hover{background:var(--amber-hi);border-color:var(--amber-hi);color:var(--on-accent)}
 
   /* ---------- sections ---------- */
-  section{padding:clamp(3.5rem,8vw,5.5rem) 0;border-bottom:1px solid var(--line-soft)}
+  section{
+    padding:clamp(3.5rem,8vw,5.5rem) 0;
+    border-bottom:1px solid var(--line-soft);
+    scroll-margin-top:74px;
+  }
   .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.6rem}
   .sec-label{
     font-family:var(--mono);font-size:.73rem;letter-spacing:.18em;
@@ -177,6 +261,63 @@
     font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--amber);margin:0 0 .8rem;
   }
+
+  /* ---------- case study ---------- */
+  .case{
+    background:var(--surface);border:1px solid var(--line-soft);
+    border-radius:2px;padding:clamp(1.5rem,4vw,2.4rem);margin-bottom:1rem;
+  }
+  .case .where{
+    display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;
+  }
+  .case h3{
+    margin:0;font-size:clamp(1.25rem,3vw,1.55rem);
+    font-weight:600;letter-spacing:-.02em;
+  }
+  .case-lede{
+    margin:.8rem 0 0;color:var(--ink-dim);font-size:1.02rem;
+    max-width:46em;text-wrap:pretty;
+  }
+  .case-blocks{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:1.9rem 3rem;margin-top:2.2rem;
+  }
+  .case-blocks h4{
+    font-family:var(--mono);font-size:.71rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--amber);font-weight:500;margin:0 0 .55rem;
+  }
+  .case-blocks p{margin:0;color:var(--ink-dim);font-size:.95rem;line-height:1.62}
+
+  details.code{
+    margin-top:2.2rem;padding-top:1.3rem;
+    border-top:1px solid var(--line-soft);
+  }
+  details.code summary{
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.55rem;
+    font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--teal);
+    transition:color .18s;
+  }
+  details.code summary::-webkit-details-marker{display:none}
+  details.code summary::before{
+    content:"+";color:var(--amber);font-size:1rem;line-height:1;width:.7em;
+  }
+  details.code[open] summary::before{content:"–"}
+  details.code summary:hover{color:var(--ink)}
+  .code-note{
+    color:var(--ink-faint);font-size:.89rem;line-height:1.6;
+    margin:1.1rem 0 0;max-width:54em;
+  }
+  pre{
+    margin:1.1rem 0 0;background:var(--raised);
+    border:1px solid var(--line-soft);border-radius:2px;
+    padding:1.1rem 1.2rem;overflow-x:auto;
+  }
+  pre code{
+    font-family:var(--mono);font-size:.77rem;line-height:1.7;
+    color:var(--ink-dim);white-space:pre;
+  }
+  pre code .c{color:var(--ink-faint)}
 
   /* ---------- selected work ---------- */
   .works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
@@ -257,6 +398,24 @@
     font-family:var(--mono);font-size:.73rem;color:var(--ink-faint);letter-spacing:.04em;
   }
 
+  @media (max-width:1000px){
+    .topbar-inner{height:auto;flex-wrap:wrap;padding-top:.6rem}
+    .mark{order:1}
+    .controls{order:2;margin-left:auto}
+    .nav{
+      order:3;flex:0 0 100%;justify-content:flex-start;
+      margin-top:.6rem;padding:.55rem 0 .15rem;
+      border-top:1px solid var(--line-soft);
+    }
+    section{scroll-margin-top:116px}
+  }
+
+  @media (max-width:820px){
+    .hero-inner{grid-template-columns:1fr;gap:2rem}
+    .portrait{justify-self:start;order:-1}
+    .portrait img{width:108px;height:108px}
+  }
+
   @media (max-width:760px){
     .job{grid-template-columns:1fr;gap:.7rem}
     .edu-grid{grid-template-columns:1fr;gap:2.2rem}
@@ -264,6 +423,7 @@
   }
 
   @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
     .trace .curve{animation:none;stroke-dashoffset:0}
     *{transition:none !important}
   }
@@ -272,9 +432,29 @@
 <header class="topbar">
   <div class="topbar-inner">
     <a class="mark" href="#top"><b>Filip Timko</b> — SFMC</a>
-    <div class="langswitch" role="group" aria-label="Language">
-      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
-      <button class="lang-btn" data-lang="sk" aria-pressed="false">SK</button>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work" data-en="What I do" data-sk="Čo robím">What I do</a>
+      <a href="#experience" data-en="Experience" data-sk="Prax">Experience</a>
+      <a href="#projects" data-en="Work" data-sk="Projekty">Work</a>
+      <a href="#certifications" data-en="Certifications" data-sk="Certifikácie">Certifications</a>
+      <a href="#education" data-en="Education" data-sk="Vzdelanie">Education</a>
+      <a href="#toolbox" data-en="Toolbox" data-sk="Nástroje">Toolbox</a>
+      <a href="#contact" data-en="Contact" data-sk="Kontakt">Contact</a>
+    </nav>
+    <div class="controls">
+      <div class="langswitch" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="sk" aria-pressed="false">SK</button>
+      </div>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"></path>
+        </svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8z"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
@@ -288,6 +468,7 @@
       <path class="curve" d="M 0,250 H 300 C 340,250 362,58 452,50 C 512,44 544,116 602,110 C 652,105 664,84 712,87 C 784,91 802,92 884,92 H 1200"></path>
     </svg>
     <div class="wrap hero-inner">
+      <div class="hero-text">
       <p class="eyebrow" data-en="Košice · Slovakia" data-sk="Košice · Slovensko">Košice · Slovakia</p>
       <h1>Filip Timko</h1>
       <p class="role" data-en="Salesforce Marketing Cloud Consultant / Developer — IBM" data-sk="Salesforce Marketing Cloud konzultant / developer — IBM">Salesforce Marketing Cloud Consultant / Developer — IBM</p>
@@ -296,6 +477,10 @@
         <a class="btn btn-primary" href="mailto:timko365@gmail.com" data-en="Get in touch" data-sk="Napíšte mi">Get in touch</a>
         <a class="btn" href="https://www.linkedin.com/in/filip-timko-015a31212/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="#experience" data-en="See experience" data-sk="Pozrieť prax">See experience</a>
+      </div>
+      </div>
+      <div class="portrait">
+        <img src="data:image/jpeg;base64,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" alt="Filip Timko" width="180" height="180">
       </div>
     </div>
   </div>
@@ -394,13 +579,136 @@
       <div class="sec-head">
         <span class="sec-label" data-en="Selected work" data-sk="Vybrané projekty">Selected work</span>
       </div>
+
+      <article class="case">
+        <span class="where" data-en="IBM Consulting Advantage · internal tool" data-sk="IBM Consulting Advantage · interný nástroj">IBM Consulting Advantage · internal tool</span>
+        <h3>SMS Builder (CZ/SK)</h3>
+        <p class="case-lede" data-en="An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see." data-sk="Asistent, ktorý z ticketu urobí hotový skript na odoslanie SMS — a zachytí to, čo človek nečítajúci po česky ani po slovensky nevidí.">An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see.</p>
+
+        <div class="case-blocks">
+          <div>
+            <h4 data-en="The problem" data-sk="Problém">The problem</h4>
+            <p data-en="SMS copy arrives from the client already written, together with its tagging, in a ticket. Turning that into a send script is mechanical but rule-dense: which script you need depends on what sits inside the text — a plain message, a fixed link, a link that comes from the data, a personal salutation. Tracking parameters are derived from naming conventions. And Czech and Slovak carry characters outside the GSM-7 alphabet, which quietly changes how a message is encoded and charged." data-sk="Text SMS chodí od klienta už napísaný, spolu s taggingom, v tickete. Poskladať z toho skript je mechanická práca, ale plná pravidiel: ktorý skript potrebuješ, závisí od toho, čo je v texte — obyčajná správa, pevný odkaz, odkaz z dát, oslovenie. Trackovacie parametre sa odvodzujú z pomenovacích konvencií. A čeština so slovenčinou nesú znaky mimo abecedy GSM-7, čo potichu mení, ako sa správa zakóduje a účtuje.">SMS copy arrives from the client already written, together with its tagging, in a ticket. Turning that into a send script is mechanical but rule-dense: which script you need depends on what sits inside the text — a plain message, a fixed link, a link that comes from the data, a personal salutation. Tracking parameters are derived from naming conventions. And Czech and Slovak carry characters outside the GSM-7 alphabet, which quietly changes how a message is encoded and charged.</p>
+          </div>
+          <div>
+            <h4 data-en="What I built" data-sk="Čo som postavil">What I built</h4>
+            <p data-en="An assistant in IBM Consulting Advantage. You paste the message body and the tagging from the ticket; it works out which script type the text needs, derives the tracking parameters from the naming convention, and returns the finished script. The rules live in a knowledge base I wrote — the assistant is configuration around that document, not magic. It matters because the team includes colleagues who read neither language, so the language-dependent checks are invisible to them." data-sk="Asistent v IBM Consulting Advantage. Vložíš telo správy a tagging z ticketu; asistent určí, ktorý typ skriptu text potrebuje, odvodí trackovacie parametre z pomenovacej konvencie a vráti hotový skript. Pravidlá žijú v knowledge base, ktorú som napísal — asistent je konfigurácia okolo toho dokumentu, nie mágia. Záleží na tom preto, že v tíme máme kolegov, ktorí ani jeden z tých jazykov nečítajú, takže jazykovo závislé kontroly sú pre nich neviditeľné.">An assistant in IBM Consulting Advantage. You paste the message body and the tagging from the ticket; it works out which script type the text needs, derives the tracking parameters from the naming convention, and returns the finished script. The rules live in a knowledge base I wrote — the assistant is configuration around that document, not magic. It matters because the team includes colleagues who read neither language, so the language-dependent checks are invisible to them.</p>
+          </div>
+          <div>
+            <h4 data-en="What surprised me" data-sk="Čo ma prekvapilo">What surprised me</h4>
+            <p data-en="A large part of the knowledge base ended up describing what the assistant must never produce. A generative tool does not fail here by refusing — it fails by returning a script that looks entirely plausible, uses a variable name that does not exist, and breaks in production. So every wrong answer I hit during testing went back into the document as an explicit counter-example. Writing down the failure modes turned out to be worth more than writing down the happy path." data-sk="Veľká časť knowledge base nakoniec popísala to, čo asistent nesmie vyprodukovať. Generatívny nástroj tu nezlyhá tak, že odmietne — zlyhá tak, že vráti skript, ktorý vyzerá úplne vierohodne, použije názov premennej, ktorý neexistuje, a spadne až v produkcii. Takže každá zlá odpoveď, na ktorú som pri testovaní narazil, sa vrátila do dokumentu ako výslovný protipríklad. Zapísať spôsoby zlyhania sa ukázalo cennejšie než zapísať správny postup.">A large part of the knowledge base ended up describing what the assistant must never produce. A generative tool does not fail here by refusing — it fails by returning a script that looks entirely plausible, uses a variable name that does not exist, and breaks in production. So every wrong answer I hit during testing went back into the document as an explicit counter-example. Writing down the failure modes turned out to be worth more than writing down the happy path.</p>
+          </div>
+          <div>
+            <h4 data-en="Where it stands" data-sk="Kde to stojí">Where it stands</h4>
+            <p data-en="Presented to a team of fifteen and used by most of it. It is scoped to our team — opening it up more widely needs permissions and rework, and this was a side project outside my scope on the client engagement." data-sk="Odprezentované pätnásťčlennému tímu, používa to väčšina. Je to obmedzené na náš tím — sprístupniť to širšie si žiada povolenia a úpravy, a išlo o vedľajší projekt mimo môjho rozsahu na klientskom projekte.">Presented to a team of fifteen and used by most of it. It is scoped to our team — opening it up more widely needs permissions and rework, and this was a side project outside my scope on the client engagement.</p>
+          </div>
+        </div>
+
+        <details class="code">
+          <summary data-en="The character problem, in code" data-sk="Problém so znakmi, v kóde">The character problem, in code</summary>
+          <p class="code-note" data-en="Written from scratch for this page — not the tool’s code. In GSM-7 a single-segment SMS holds 160 characters. Slovak and Czech push text outside that alphabet: č, ř, š, ž, ľ, ť, ď, ň, á, í, ó, ú, ý, ô. A single one of them switches the whole message to UCS-2, where a segment is 70 characters." data-sk="Napísané nanovo pre túto stránku — nie kód nástroja. V GSM-7 sa do jednosegmentovej SMS zmestí 160 znakov. Slovenčina a čeština text z tejto abecedy vytláčajú: č, ř, š, ž, ľ, ť, ď, ň, á, í, ó, ú, ý, ô. Jediný z nich prepne celú správu do UCS-2, kde má segment 70 znakov.">Written from scratch for this page — not the tool’s code.</p>
+          <pre><code><span class="c">// GSM 03.38 basic alphabet. Anything outside this set forces the whole</span>
+<span class="c">// message to UCS-2, where one segment holds 70 characters instead of 160.</span>
+const GSM7 =
+  "@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&amp;'()*+,-./0123456789:;&lt;=&gt;?" +
+  "¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà";
+<span class="c">
+// Extension characters: each one costs two of the 160.</span>
+const GSM7_EXT = "^{}\\[~]|€";
+
+function analyse(text) {
+  const chars = [...text];
+  const outside = chars.filter(c =&gt; !GSM7.includes(c) &amp;&amp; !GSM7_EXT.includes(c));
+
+  if (outside.length) {
+    const len = chars.length;
+    return {
+      encoding: "UCS-2",
+      length: len,
+      segments: len &lt;= 70 ? 1 : Math.ceil(len / 67),
+      forcedBy: [...new Set(outside)]
+    };
+  }
+
+  const len = chars.reduce((n, c) =&gt; n + (GSM7_EXT.includes(c) ? 2 : 1), 0);
+  return {
+    encoding: "GSM-7",
+    length: len,
+    segments: len &lt;= 160 ? 1 : Math.ceil(len / 153),
+    forcedBy: []
+  };
+}
+</code></pre>
+          <p class="code-note" data-en="A 158-character message plus one č is not 159 characters. It is three segments." data-sk="Správa so 158 znakmi plus jedno č nie je 159 znakov. Sú to tri segmenty.">A 158-character message plus one č is not 159 characters. It is three segments.</p>
+        </details>
+      </article>
+
+
+      <article class="case">
+        <span class="where" data-en="Salesforce Marketing Cloud · client engagement" data-sk="Salesforce Marketing Cloud · klientsky projekt">Salesforce Marketing Cloud · client engagement</span>
+        <h3 data-en="The send I stopped" data-sk="Odoslanie, ktoré som zastavil">The send I stopped</h3>
+        <p class="case-lede" data-en="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway." data-sk="Odkaz na dotazník mal ísť ľuďom cez SMS. Odkaz vznikne až vtedy, keď journey vytvorí pozvánku, takže sa musí poskladať v momente odosielania. Napísal som skript aj journey, spustil to — a aj tak som si šiel pozrieť dáta.">A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway.</p>
+
+        <div class="case-blocks">
+          <div>
+            <h4 data-en="How it was built" data-sk="Ako to bolo postavené">How it was built</h4>
+            <p data-en="There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit." data-sk="Na takúto vec sme skript ešte nemali. Pozvánka na dotazník vzniká ako aktivita vnútri journey, takže odkaz sa musí poskladať v AMPscripte až pri stavaní samotnej správy. Skript aj journey som napísal ja; kolega pripravil audience a cieľové dáta. Journey posiela obsah najprv klientovi na poslednú kontrolu a audience až o dve hodiny neskôr, a ide po dávkach, lebo skracovač odkazov má limit.">There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit.</p>
+          </div>
+          <div>
+            <h4 data-en="What went wrong" data-sk="Čo sa pokazilo">What went wrong</h4>
+            <p data-en="Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review." data-sk="Peer review prešlo. Kolega potvrdil, že dáta sú pripravené. Spustil som journey — a aj tak mi to nesedelo, tak som otvoril cieľový dátový extension a pozrel sa sám. Pole, z ktorého sa odkaz skladá, bolo prázdne. Správa by odišla úplne v poriadku: správny text, správni príjemcovia a odkaz na dotazník, ktorý nikam nevedie. A prvé, čo malo ísť von, bol obsah pre klienta na kontrolu.">Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review.</p>
+          </div>
+          <div>
+            <h4 data-en="What I did" data-sk="Čo som spravil">What I did</h4>
+            <p data-en="Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause." data-sk="Zastavil som journey. Kolega nebol pri počítači, tak som prerobil dotaz aj automatizáciu sám a dáta načítal. Potom som napísal peer reviewerovi, čo sa stalo a čo presne treba prekontrolovať — zastavená journey sa nedá len tak rozbehnúť, musela sa postaviť nanovo ako kópia. Odoslanie prebehlo v pôvodnom časovom okne. Klient o pauze nevedel.">Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause.</p>
+          </div>
+          <div>
+            <h4 data-en="What I changed" data-sk="Čo som zmenil">What I changed</h4>
+            <p data-en="I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable." data-sk="Prestal som brať vetu „dáta sú pripravené“ ako kontrolu. Keď ti niekto povie, že dáta sú pripravené, je to hlásenie stavu, nie overenie — nie je to výčitka voči kolegovi, tie dve veci jednoducho nie sú to isté. Personalizované odoslanie dnes nespustím, kým dotaz nepotvrdí samotný cieľ: riadky existujú, personalizačné polia sú vyplnené, žiadne duplicity. Trvá to sekundy a nahrádza to tušenie niečím opakovateľným.">I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable.</p>
+          </div>
+        </div>
+
+        <details class="code">
+          <summary data-en="The pre-flight query" data-sk="Kontrolný dotaz pred spustením">The pre-flight query</summary>
+          <p class="code-note" data-en="Written from scratch for this page. Every row it returns is a reason not to press Start — a clean target returns nothing at all." data-sk="Napísané nanovo pre túto stránku. Každý riadok, ktorý vráti, je dôvod nespúšťať — čistý cieľ nevráti nič.">Written from scratch for this page.</p>
+          <pre><code><span class="c">/*  Pre-flight check for a personalised send.
+    Every row this returns is a reason not to press Start.
+    A clean target returns nothing at all.                        */</span>
+
+WITH target AS (
+    SELECT contact_key,
+           personalisation_id
+    FROM   campaign_target
+)
+
+SELECT 'target is empty'               AS problem,
+       COUNT(*)                        AS affected
+FROM   target
+HAVING COUNT(*) = 0
+
+UNION ALL
+
+SELECT 'personalisation field is null',
+       COUNT(*)
+FROM   target
+WHERE  personalisation_id IS NULL
+HAVING COUNT(*) &gt; 0
+
+UNION ALL
+
+SELECT 'contact appears more than once',
+       COUNT(*)
+FROM   (SELECT contact_key
+        FROM   target
+        GROUP  BY contact_key
+        HAVING COUNT(*) &gt; 1) AS dupes
+HAVING COUNT(*) &gt; 0;
+</code></pre>
+          <p class="code-note" data-en="The branch that would have caught this incident is the middle one. It would have returned a single row." data-sk="Vetva, ktorá by tento incident zachytila, je tá prostredná. Vrátila by jediný riadok.">The branch that would have caught this incident is the middle one.</p>
+        </details>
+      </article>
+
       <div class="works">
-        <article class="work">
-          <span class="where">IBM Consulting Advantage</span>
-          <h3 data-en="AI assistants for Marketing Cloud" data-sk="AI asistenti pre Marketing Cloud">AI assistants for Marketing Cloud</h3>
-          <p data-en="Internal assistants that validate SQL, generate AMPscript and walk new team members through onboarding. I designed the prompts and the knowledge bases behind them — the goal was consistency across CRM operations, not one-off answers." data-sk="Interní asistenti, ktorí validujú SQL, generujú AMPscript a prevedú nováčikov onboardingom. Navrhol som prompty aj knowledge bázy za nimi — cieľom bola konzistentnosť CRM operatívy, nie jednorazové odpovede.">Internal assistants that validate SQL, generate AMPscript and walk new team members through onboarding. I designed the prompts and the knowledge bases behind them — the goal was consistency across CRM operations, not one-off answers.</p>
-          <p class="stack">AI assistants · AMPscript · SQL · knowledge bases</p>
-        </article>
         <article class="work">
           <span class="where">U. S. Steel Košice</span>
           <h3 data-en="Energy market reporting tools" data-sk="Nástroje na reporting energetických trhov">Energy market reporting tools</h3>
@@ -559,8 +867,42 @@
 (function () {
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-btn'));
   var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+  var themeBtn = document.getElementById('theme-btn');
+  var root = document.documentElement;
+  var currentLang = 'en';
+
+  var THEME_LABEL = {
+    en: { light: 'Switch to light theme', dark: 'Switch to dark theme' },
+    sk: { light: 'Prepnúť na svetlú tému', dark: 'Prepnúť na tmavú tému' }
+  };
+
+  function labelTheme() {
+    if (!themeBtn) return;
+    var next = root.getAttribute('data-ft-theme') === 'light' ? 'dark' : 'light';
+    var text = (THEME_LABEL[currentLang] || THEME_LABEL.en)[next];
+    themeBtn.setAttribute('aria-label', text);
+    themeBtn.setAttribute('title', text);
+  }
+
+  function setTheme(theme) {
+    if (theme === 'light') root.setAttribute('data-ft-theme', 'light');
+    else root.removeAttribute('data-ft-theme');
+    try { localStorage.setItem('ft-theme', theme); } catch (e) {}
+    labelTheme();
+  }
+
+  try {
+    if (localStorage.getItem('ft-theme') === 'light') root.setAttribute('data-ft-theme', 'light');
+  } catch (e) {}
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-ft-theme') === 'light' ? 'dark' : 'light');
+    });
+  }
 
   function apply(lang) {
+    currentLang = lang;
     nodes.forEach(function (el) {
       var v = el.getAttribute('data-' + lang);
       if (v !== null) el.textContent = v;
@@ -568,7 +910,8 @@
     buttons.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
     });
-    document.documentElement.lang = lang;
+    root.lang = lang;
+    labelTheme();
   }
 
   buttons.forEach(function (b) {
@@ -580,6 +923,29 @@
 
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());
+
+  /* highlight the section currently in view */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var byId = {};
+  var sections = links.map(function (a) {
+    var el = document.querySelector(a.getAttribute('href'));
+    if (el) byId[el.id] = a;
+    return el;
+  }).filter(Boolean);
+
+  if (sections.length && 'IntersectionObserver' in window) {
+    var visible = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      var current = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (visible[sections[i].id]) { current = sections[i].id; break; }
+      }
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (current && byId[current]) byId[current].classList.add('active');
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { io.observe(s); });
+  }
 })();
 </script>
 
