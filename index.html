@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Filip Timko — Salesforce Marketing Cloud consultant based in Kosice, Slovakia. Email and SMS journeys, AMPscript personalisation, Journey Builder automation.">
+<meta property="og:title" content="Filip Timko — Salesforce Marketing Cloud consultant">
+<meta property="og:description" content="Email and SMS journeys, AMPscript personalisation, Journey Builder automation.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0E13'/%3E%3Cpath d='M3 24 h8 c4 0 4 -16 8 -16 c4 0 4 8 10 8' fill='none' stroke='%23E39B3C' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+</head>
+<body>
+<title>Filip Timko</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+  :root{
+    --ground:#0A0E13;
+    --surface:#111820;
+    --raised:#161F29;
+    --line:#22303D;
+    --line-soft:#1A242F;
+    --ink:#E4ECF3;
+    --ink-dim:#94A6B8;
+    --ink-faint:#63768A;
+    --amber:#E39B3C;
+    --amber-soft:rgba(227,155,60,.14);
+    --teal:#5AA9BC;
+    --sans:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --wrap:min(1080px,100% - 3rem);
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+
+  .wrap{width:var(--wrap);margin-inline:auto}
+
+  /* ---------- header ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(10,14,19,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .topbar-inner{
+    width:var(--wrap);margin-inline:auto;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    height:58px;
+  }
+  .mark{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-dim);text-decoration:none;
+  }
+  .mark b{color:var(--ink);font-weight:500}
+
+  .langswitch{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .lang-btn{
+    appearance:none;border:0;background:transparent;cursor:pointer;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
+    padding:.4rem .7rem;color:var(--ink-faint);transition:color .18s,background .18s;
+  }
+  .lang-btn:hover{color:var(--ink)}
+  .lang-btn[aria-pressed="true"]{background:var(--amber-soft);color:var(--amber)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+  .trace{
+    position:absolute;inset:auto 0 0 0;height:min(62%,300px);
+    width:100%;opacity:.5;pointer-events:none;
+  }
+  .trace .curve{
+    fill:none;stroke:var(--amber);stroke-width:2;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:2400;stroke-dashoffset:2400;
+    animation:draw 2.4s cubic-bezier(.6,.05,.2,1) .35s forwards;
+  }
+  .trace .setpoint{stroke:var(--teal);stroke-width:1;stroke-dasharray:5 7;opacity:.55}
+  .trace .axis{stroke:var(--line);stroke-width:1}
+  @keyframes draw{to{stroke-dashoffset:0}}
+
+  .hero-inner{position:relative;z-index:1;padding:clamp(4rem,11vw,7.5rem) 0 clamp(6rem,14vw,9rem)}
+  .eyebrow{
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.4rem;
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--amber);display:inline-block}
+
+  h1{
+    font-size:clamp(2.8rem,8vw,5.1rem);
+    line-height:1.02;letter-spacing:-.035em;font-weight:600;
+    margin:0;text-wrap:balance;
+  }
+  .role{
+    font-family:var(--mono);font-size:clamp(.9rem,2vw,1.05rem);
+    color:var(--amber);margin:1.1rem 0 0;letter-spacing:-.01em;
+  }
+  .lede{
+    max-width:34em;color:var(--ink-dim);font-size:1.09rem;
+    margin:1.7rem 0 0;text-wrap:pretty;
+  }
+
+  .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.4rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;
+    text-decoration:none;padding:.7rem 1.15rem;border-radius:3px;
+    border:1px solid var(--line);color:var(--ink);
+    transition:border-color .18s,background .18s,transform .18s;
+  }
+  .btn:hover{border-color:var(--amber);background:var(--amber-soft);transform:translateY(-1px)}
+  .btn-primary{background:var(--amber);border-color:var(--amber);color:#12161B;font-weight:500}
+  .btn-primary:hover{background:#f0ad50;border-color:#f0ad50}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(3.5rem,8vw,5.5rem) 0;border-bottom:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.6rem}
+  .sec-label{
+    font-family:var(--mono);font-size:.73rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
+  }
+  .sec-head::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  h2{
+    font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;
+    letter-spacing:-.02em;margin:0;text-wrap:balance;
+  }
+
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+  .cell{background:var(--surface);padding:1.7rem}
+  .cell h3{
+    font-size:1.02rem;font-weight:600;margin:0 0 .6rem;letter-spacing:-.01em;
+  }
+  .cell .tag{
+    display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:.9rem;
+  }
+  .cell p{margin:0;color:var(--ink-dim);font-size:.97rem;line-height:1.6}
+
+  /* ---------- timeline ---------- */
+  .timeline{display:flex;flex-direction:column;gap:0}
+  .job{
+    display:grid;grid-template-columns:150px 1fr;gap:2rem;
+    padding:1.8rem 0;border-top:1px solid var(--line-soft);
+  }
+  .job:first-child{border-top:0;padding-top:0}
+  .job-when{
+    font-family:var(--mono);font-size:.78rem;color:var(--ink-faint);
+    letter-spacing:.04em;padding-top:.25rem;
+  }
+  .job-when .now{color:var(--amber)}
+  .job h3{margin:0;font-size:1.12rem;font-weight:600;letter-spacing:-.01em}
+  .job .org{
+    font-family:var(--mono);font-size:.82rem;color:var(--teal);margin:.3rem 0 .8rem;
+  }
+  .job p{margin:0;color:var(--ink-dim);font-size:.97rem}
+
+  /* ---------- certs ---------- */
+  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  .cert{
+    background:var(--surface);border:1px solid var(--line-soft);
+    border-left:2px solid var(--amber);padding:1.3rem 1.4rem;border-radius:2px;
+  }
+  .cert .issuer{
+    font-family:var(--mono);font-size:.69rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+  .cert h3{font-size:1rem;font-weight:600;margin:.55rem 0 .5rem;line-height:1.35}
+  .cert .when{font-family:var(--mono);font-size:.78rem;color:var(--teal)}
+  .cert.pending{border-left-color:var(--line);opacity:.72}
+  .cert.pending .when{color:var(--ink-faint)}
+
+  /* ---------- education ---------- */
+  .edu{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+  .edu h3{margin:0 0 .4rem;font-size:1.12rem;font-weight:600}
+  .edu .org{font-family:var(--mono);font-size:.82rem;color:var(--teal);margin:0 0 1rem}
+  .edu p{margin:0 0 1rem;color:var(--ink-dim);font-size:.97rem}
+  .pullquote{
+    border-left:2px solid var(--line);padding-left:1.3rem;
+    color:var(--ink-dim);font-size:.97rem;
+  }
+
+  /* ---------- chips ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chip{
+    font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;
+    border:1px solid var(--line);border-radius:2px;padding:.42rem .7rem;
+    color:var(--ink-dim);background:var(--surface);
+  }
+
+  /* ---------- projects placeholder ---------- */
+  .soon{
+    border:1px dashed var(--line);border-radius:3px;
+    padding:2.6rem 1.8rem;text-align:center;background:var(--surface);
+  }
+  .soon .tag{
+    font-family:var(--mono);font-size:.71rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--amber);
+  }
+  .soon p{margin:.9rem auto 0;color:var(--ink-dim);max-width:38em;font-size:.97rem}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-start}
+  .contact-grid p{margin:0;color:var(--ink-dim);max-width:30em}
+  .contact-list{display:flex;flex-direction:column;gap:.55rem;font-family:var(--mono);font-size:.88rem}
+  .contact-list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .18s,color .18s}
+  .contact-list a:hover{color:var(--amber);border-color:var(--amber)}
+  .contact-list span.k{color:var(--ink-faint);margin-right:.6rem}
+
+  footer{padding:2.2rem 0 3rem}
+  footer .wrap{
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+    font-family:var(--mono);font-size:.73rem;color:var(--ink-faint);letter-spacing:.04em;
+  }
+
+  /* ---------- placeholders to fill in ---------- */
+  .ph{
+    color:var(--amber);border-bottom:1px dashed var(--amber);
+    padding-bottom:1px;font-style:normal;
+  }
+
+  @media (max-width:720px){
+    .job{grid-template-columns:1fr;gap:.6rem}
+    .edu{grid-template-columns:1fr;gap:2rem}
+    body{font-size:16px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .trace .curve{animation:none;stroke-dashoffset:0}
+    *{transition:none !important}
+  }
+</style>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="mark" href="#top"><b>Filip Timko</b> — SFMC</a>
+    <div class="langswitch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang="sk" aria-pressed="false">SK</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <svg class="trace" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+      <line class="axis" x1="0" y1="250" x2="1200" y2="250"></line>
+      <line class="setpoint" x1="0" y1="92" x2="1200" y2="92"></line>
+      <path class="curve" d="M 0,250 H 300 C 340,250 362,58 452,50 C 512,44 544,116 602,110 C 652,105 664,84 712,87 C 784,91 802,92 884,92 H 1200"></path>
+    </svg>
+    <div class="wrap hero-inner">
+      <p class="eyebrow" data-en="Košice · Slovakia" data-sk="Košice · Slovensko">Košice · Slovakia</p>
+      <h1>Filip Timko</h1>
+      <p class="role" data-en="Salesforce Marketing Cloud consultant" data-sk="Salesforce Marketing Cloud konzultant">Salesforce Marketing Cloud consultant</p>
+      <p class="lede" data-en="I build the campaigns enterprise brands run at scale — email and SMS journeys, AMPscript-driven personalisation, and the segmentation logic underneath them. Engineer by training, marketing technologist by practice." data-sk="Staviam kampane, ktoré enterprise značky púšťajú vo veľkom — e-mailové a SMS journeys, personalizáciu cez AMPscript a segmentačnú logiku pod nimi. Inžinier vzdelaním, marketingový technológ praxou.">I build the campaigns enterprise brands run at scale — email and SMS journeys, AMPscript-driven personalisation, and the segmentation logic underneath them. Engineer by training, marketing technologist by practice.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:timko365@gmail.com" data-en="Get in touch" data-sk="Napíšte mi">Get in touch</a>
+        <a class="btn" href="#experience" data-en="See experience" data-sk="Pozrieť prax">See experience</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="What I do" data-sk="Čo robím">What I do</span>
+      </div>
+      <div class="grid-2">
+        <div class="cell">
+          <span class="tag">Campaigns</span>
+          <h3 data-en="Email &amp; SMS delivery" data-sk="E-mail a SMS delivery">Email &amp; SMS delivery</h3>
+          <p data-en="Campaigns for CZ and SK markets from brief to send — build, QA, deployment and post-send checks, on deadlines that do not move." data-sk="Kampane pre CZ a SK trh od zadania po odoslanie — príprava, QA, nasadenie a kontroly po odoslaní, v termínoch, ktoré sa neposúvajú.">Campaigns for CZ and SK markets from brief to send — build, QA, deployment and post-send checks, on deadlines that do not move.</p>
+        </div>
+        <div class="cell">
+          <span class="tag">Automation</span>
+          <h3 data-en="Journeys &amp; orchestration" data-sk="Journeys a orchestrácia">Journeys &amp; orchestration</h3>
+          <p data-en="Journey Builder flows, triggered and behavioural sends, Automation Studio schedules, and the data extensions that feed them." data-sk="Toky v Journey Builderi, triggered a behaviorálne sendy, automatizácie v Automation Studiu a dátové extensiony, ktoré ich napĺňajú.">Journey Builder flows, triggered and behavioural sends, Automation Studio schedules, and the data extensions that feed them.</p>
+        </div>
+        <div class="cell">
+          <span class="tag">Personalisation</span>
+          <h3 data-en="AMPscript &amp; dynamic content" data-sk="AMPscript a dynamický obsah">AMPscript &amp; dynamic content</h3>
+          <p data-en="Scripting that makes a single send behave like thousands — conditional blocks, lookups into data extensions, and content that adapts per recipient." data-sk="Skriptovanie, vďaka ktorému sa jeden send správa ako tisíce — podmienené bloky, lookupy do dátových extensionov a obsah, ktorý sa mení podľa príjemcu.">Scripting that makes a single send behave like thousands — conditional blocks, lookups into data extensions, and content that adapts per recipient.</p>
+        </div>
+        <div class="cell">
+          <span class="tag">Platform</span>
+          <h3 data-en="Ecosystem &amp; mentoring" data-sk="Ekosystém a mentoring">Ecosystem &amp; mentoring</h3>
+          <p data-en="Touchpoints across Salesforce Experience Cloud, work inside IBM Consulting Advantage, and reviewing and mentoring colleagues on their builds." data-sk="Napojenia na Salesforce Experience Cloud, práca v rámci IBM Consulting Advantage a mentoring a review buildov kolegov.">Touchpoints across Salesforce Experience Cloud, work inside IBM Consulting Advantage, and reviewing and mentoring colleagues on their builds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Experience" data-sk="Prax">Experience</span>
+      </div>
+      <div class="timeline">
+        <article class="job">
+          <div class="job-when"><span class="ph">20XX</span> — <span class="now" data-en="present" data-sk="súčasnosť">present</span></div>
+          <div>
+            <h3 data-en="Salesforce Marketing Cloud Consultant" data-sk="Salesforce Marketing Cloud konzultant">Salesforce Marketing Cloud Consultant</h3>
+            <p class="org">IBM</p>
+            <p data-en="Delivering email and SMS campaigns for a global FMCG client across the Czech and Slovak markets. Day-to-day: journey design and build, AMPscript personalisation, data extension management, QA and deployment — plus reviewing colleagues&#8217; work and mentoring newer team members." data-sk="Dodávam e-mailové a SMS kampane pre globálneho FMCG klienta na českom a slovenskom trhu. Bežná agenda: návrh a build journeys, personalizácia cez AMPscript, správa dátových extensionov, QA a nasadenie — plus review práce kolegov a mentoring nováčikov v tíme.">Delivering email and SMS campaigns for a global FMCG client across the Czech and Slovak markets. Day-to-day: journey design and build, AMPscript personalisation, data extension management, QA and deployment — plus reviewing colleagues&#8217; work and mentoring newer team members.</p>
+          </div>
+        </article>
+        <article class="job">
+          <div class="job-when"><span class="ph">20XX — 20XX</span></div>
+          <div>
+            <h3 class="ph" data-en="Previous role — title" data-sk="Predchádzajúca pozícia — názov">Previous role — title</h3>
+            <p class="org ph" data-en="Company" data-sk="Firma">Company</p>
+            <p data-en="Add one or two sentences here: what you owned, what you built, and one result you can point to." data-sk="Doplň jednu-dve vety: čo si mal na starosti, čo si postavil a jeden konkrétny výsledok.">Add one or two sentences here: what you owned, what you built, and one result you can point to.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Certifications" data-sk="Certifikácie">Certifications</span>
+      </div>
+      <div class="certs">
+        <div class="cert">
+          <span class="issuer">Salesforce</span>
+          <h3 data-en="Certified Marketing Cloud Engagement Specialist" data-sk="Certified Marketing Cloud Engagement Specialist">Certified Marketing Cloud Engagement Specialist</h3>
+          <p class="when" data-en="August 2026 · formerly Email Specialist" data-sk="August 2026 · pôvodne Email Specialist">August 2026 · formerly Email Specialist</p>
+        </div>
+        <div class="cert">
+          <span class="issuer">Salesforce</span>
+          <h3 data-en="Certified AI Associate" data-sk="Certified AI Associate">Certified AI Associate</h3>
+          <p class="when" data-en="February 2025" data-sk="Február 2025">February 2025</p>
+        </div>
+        <div class="cert pending">
+          <span class="issuer">Salesforce</span>
+          <h3 class="ph" data-en="Next certification — architect level" data-sk="Ďalšia certifikácia — architect level">Next certification — architect level</h3>
+          <p class="when" data-en="In preparation" data-sk="V príprave">In preparation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Background" data-sk="Vzdelanie">Background</span>
+      </div>
+      <div class="edu">
+        <div>
+          <h3 data-en="Engineering degree (Ing.)" data-sk="Inžinierske štúdium (Ing.)">Engineering degree (Ing.)</h3>
+          <p class="org ph" data-en="University — faculty, years" data-sk="Univerzita — fakulta, roky">University — faculty, years</p>
+          <p data-en="Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles." data-sk="Diplomová práca o diskrétnych pokročilých algoritmoch riadenia — MAC, DMC a IMC-PID — aplikovaných na laboratórnu pec: modelovanie systému, ladenie regulátorov a porovnanie, ako jednotlivé prístupy ustaľujú sústavu.">Diploma thesis on discrete-time advanced control algorithms — MAC, DMC and IMC-PID — applied to a laboratory furnace: modelling the system, tuning the controllers, and comparing how each one settles.</p>
+        </div>
+        <div class="pullquote">
+          <p data-en="Control engineering turned out to be unexpectedly good training for marketing automation. Both are feedback loops: you set a target, you measure what actually happens, and you tune the system until the response settles where you wanted it — without overshooting into the customer&#8217;s inbox." data-sk="Riadenie procesov sa ukázalo ako prekvapivo dobrá príprava na marketingovú automatizáciu. Oboje sú spätnoväzbové slučky: nastavíš cieľ, meriaš, čo sa naozaj deje, a ladíš systém, kým sa odozva neustáli tam, kde má — bez prekmitu do zákazníkovej schránky.">Control engineering turned out to be unexpectedly good training for marketing automation. Both are feedback loops: you set a target, you measure what actually happens, and you tune the system until the response settles where you wanted it — without overshooting into the customer&#8217;s inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="toolbox">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Toolbox" data-sk="Nástroje">Toolbox</span>
+      </div>
+      <div class="chips">
+        <span class="chip">Email Studio</span>
+        <span class="chip">Journey Builder</span>
+        <span class="chip">Automation Studio</span>
+        <span class="chip">Content Builder</span>
+        <span class="chip">AMPscript</span>
+        <span class="chip">Data Extensions</span>
+        <span class="chip">Mobile Studio / SMS</span>
+        <span class="chip">Experience Cloud</span>
+        <span class="chip">HTML &amp; CSS email</span>
+        <span class="chip ph" data-en="+ add your own" data-sk="+ doplň vlastné">+ add your own</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Selected work" data-sk="Vybrané projekty">Selected work</span>
+      </div>
+      <div class="soon">
+        <span class="tag" data-en="In progress" data-sk="Pripravuje sa">In progress</span>
+        <p data-en="This is where side projects and automation experiments will live — the things built outside client work. Coming soon." data-sk="Sem prídu vlastné projekty a automatizačné experimenty — veci postavené mimo klientskej práce. Čoskoro.">This is where side projects and automation experiments will live — the things built outside client work. Coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label" data-en="Contact" data-sk="Kontakt">Contact</span>
+      </div>
+      <div class="contact-grid">
+        <p data-en="Open to conversations about Marketing Cloud work, consulting engagements, and interesting automation problems." data-sk="Rád sa pobavím o práci v Marketing Cloude, konzultačných projektoch a zaujímavých automatizačných problémoch.">Open to conversations about Marketing Cloud work, consulting engagements, and interesting automation problems.</p>
+        <div class="contact-list">
+          <div><span class="k">email</span><a href="mailto:timko365@gmail.com">timko365@gmail.com</a></div>
+          <div><span class="k">linkedin</span><a class="ph" href="#" data-en="add your profile URL" data-sk="doplň URL profilu">add your profile URL</a></div>
+          <div><span class="k">location</span><span data-en="Košice, Slovakia" data-sk="Košice, Slovensko">Košice, Slovakia</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span data-en="Hand-built. No template." data-sk="Postavené ručne. Bez šablóny.">Hand-built. No template.</span>
+      <span>© <span id="yr">2026</span> Filip Timko</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-btn'));
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+
+  function apply(lang) {
+    nodes.forEach(function (el) {
+      var v = el.getAttribute('data-' + lang);
+      if (v !== null) el.textContent = v;
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+    document.documentElement.lang = lang;
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); });
+  });
+
+  var nav = (navigator.language || '').toLowerCase();
+  apply(nav.indexOf('sk') === 0 || nav.indexOf('cs') === 0 ? 'sk' : 'en');
+
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = String(new Date().getFullYear());
+})();
+</script>
+
+</body>
+</html>
