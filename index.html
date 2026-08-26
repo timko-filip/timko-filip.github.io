@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://timko-filip.github.io/">
 <meta property="og:site_name" content="Filip Timko">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://timko-filip.github.io/assets/img/og.png">
+<meta property="og:image" content="https://timko-filip.github.io/assets/img/og.png?v=2">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Filip Timko — Salesforce Consultant at IBM, Marketing Cloud">
 <meta name="twitter:description" content="Customer journeys, AMPscript personalisation, SQL segmentation, and AI-assisted marketing automation.">
-<meta name="twitter:image" content="https://timko-filip.github.io/assets/img/og.png">
+<meta name="twitter:image" content="https://timko-filip.github.io/assets/img/og.png?v=2">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -264,135 +264,24 @@
         <span class="sec-label" data-en="Selected work" data-sk="Vybrané projekty">Selected work</span>
       </div>
 
-      <article class="case">
-        <span class="where" data-en="IBM Consulting Advantage · internal tool" data-sk="IBM Consulting Advantage · interný nástroj">IBM Consulting Advantage · internal tool</span>
-        <h3>SMS Builder (CZ/SK)</h3>
-        <p class="case-lede" data-en="An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see." data-sk="Asistent, ktorý z ticketu urobí hotový skript na odoslanie SMS — a zachytí to, čo človek nečítajúci po česky ani po slovensky nevidí.">An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see.</p>
-
-        <div class="case-blocks">
-          <div>
-            <h4 data-en="The problem" data-sk="Problém">The problem</h4>
-            <p data-en="SMS copy arrives from the client already written, together with its tagging, in a ticket. Turning that into a send script is mechanical but rule-dense: which script you need depends on what sits inside the text — a plain message, a fixed link, a link that comes from the data, a personal salutation. Tracking parameters are derived from naming conventions. And Czech and Slovak carry characters outside the GSM-7 alphabet, which quietly changes how a message is encoded and charged." data-sk="Text SMS chodí od klienta už napísaný, spolu s taggingom, v tickete. Poskladať z toho skript je mechanická práca, ale plná pravidiel: ktorý skript potrebuješ, závisí od toho, čo je v texte — obyčajná správa, pevný odkaz, odkaz z dát, oslovenie. Trackovacie parametre sa odvodzujú z pomenovacích konvencií. A čeština so slovenčinou nesú znaky mimo abecedy GSM-7, čo potichu mení, ako sa správa zakóduje a účtuje.">SMS copy arrives from the client already written, together with its tagging, in a ticket. Turning that into a send script is mechanical but rule-dense: which script you need depends on what sits inside the text — a plain message, a fixed link, a link that comes from the data, a personal salutation. Tracking parameters are derived from naming conventions. And Czech and Slovak carry characters outside the GSM-7 alphabet, which quietly changes how a message is encoded and charged.</p>
-          </div>
-          <div>
-            <h4 data-en="What I built" data-sk="Čo som postavil">What I built</h4>
-            <p data-en="An assistant in IBM Consulting Advantage. You paste the message body and the tagging from the ticket; it works out which script type the text needs, derives the tracking parameters from the naming convention, and returns the finished script. The rules live in a knowledge base I wrote — the assistant is configuration around that document, not magic. It matters because the team includes colleagues who read neither language, so the language-dependent checks are invisible to them." data-sk="Asistent v IBM Consulting Advantage. Vložíš telo správy a tagging z ticketu; asistent určí, ktorý typ skriptu text potrebuje, odvodí trackovacie parametre z pomenovacej konvencie a vráti hotový skript. Pravidlá žijú v knowledge base, ktorú som napísal — asistent je konfigurácia okolo toho dokumentu, nie mágia. Záleží na tom preto, že v tíme máme kolegov, ktorí ani jeden z tých jazykov nečítajú, takže jazykovo závislé kontroly sú pre nich neviditeľné.">An assistant in IBM Consulting Advantage. You paste the message body and the tagging from the ticket; it works out which script type the text needs, derives the tracking parameters from the naming convention, and returns the finished script. The rules live in a knowledge base I wrote — the assistant is configuration around that document, not magic. It matters because the team includes colleagues who read neither language, so the language-dependent checks are invisible to them.</p>
-          </div>
-          <div>
-            <h4 data-en="What surprised me" data-sk="Čo ma prekvapilo">What surprised me</h4>
-            <p data-en="A large part of the knowledge base ended up describing what the assistant must never produce. A generative tool does not fail here by refusing — it fails by returning a script that looks entirely plausible, uses a variable name that does not exist, and breaks in production. So every wrong answer I hit during testing went back into the document as an explicit counter-example. Writing down the failure modes turned out to be worth more than writing down the happy path." data-sk="Veľká časť knowledge base nakoniec popísala to, čo asistent nesmie vyprodukovať. Generatívny nástroj tu nezlyhá tak, že odmietne — zlyhá tak, že vráti skript, ktorý vyzerá úplne vierohodne, použije názov premennej, ktorý neexistuje, a spadne až v produkcii. Takže každá zlá odpoveď, na ktorú som pri testovaní narazil, sa vrátila do dokumentu ako výslovný protipríklad. Zapísať spôsoby zlyhania sa ukázalo cennejšie než zapísať správny postup.">A large part of the knowledge base ended up describing what the assistant must never produce. A generative tool does not fail here by refusing — it fails by returning a script that looks entirely plausible, uses a variable name that does not exist, and breaks in production. So every wrong answer I hit during testing went back into the document as an explicit counter-example. Writing down the failure modes turned out to be worth more than writing down the happy path.</p>
-          </div>
-          <div>
-            <h4 data-en="Where it stands" data-sk="Kde to stojí">Where it stands</h4>
-            <p data-en="Presented to a team of fifteen and used by most of it. It is scoped to our team — opening it up more widely needs permissions and rework, and this was a side project outside my scope on the client engagement." data-sk="Odprezentované pätnásťčlennému tímu, používa to väčšina. Je to obmedzené na náš tím — sprístupniť to širšie si žiada povolenia a úpravy, a išlo o vedľajší projekt mimo môjho rozsahu na klientskom projekte.">Presented to a team of fifteen and used by most of it. It is scoped to our team — opening it up more widely needs permissions and rework, and this was a side project outside my scope on the client engagement.</p>
-          </div>
-        </div>
-
-        <details class="code">
-          <summary data-en="The character problem, in code" data-sk="Problém so znakmi, v kóde">The character problem, in code</summary>
-          <p class="code-note" data-en="Written from scratch for this page — not the tool’s code. In GSM-7 a single-segment SMS holds 160 characters. Slovak and Czech push text outside that alphabet: č, ř, š, ž, ľ, ť, ď, ň, á, í, ó, ú, ý, ô. A single one of them switches the whole message to UCS-2, where a segment is 70 characters." data-sk="Napísané nanovo pre túto stránku — nie kód nástroja. V GSM-7 sa do jednosegmentovej SMS zmestí 160 znakov. Slovenčina a čeština text z tejto abecedy vytláčajú: č, ř, š, ž, ľ, ť, ď, ň, á, í, ó, ú, ý, ô. Jediný z nich prepne celú správu do UCS-2, kde má segment 70 znakov.">Written from scratch for this page — not the tool’s code.</p>
-          <pre><code><span class="c">// GSM 03.38 basic alphabet. Anything outside this set forces the whole</span>
-<span class="c">// message to UCS-2, where one segment holds 70 characters instead of 160.</span>
-const GSM7 =
-  "@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&amp;'()*+,-./0123456789:;&lt;=&gt;?" +
-  "¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà";
-<span class="c">
-// Extension characters: each one costs two of the 160.</span>
-const GSM7_EXT = "^{}\\[~]|€";
-
-function analyse(text) {
-  const chars = [...text];
-  const outside = chars.filter(c =&gt; !GSM7.includes(c) &amp;&amp; !GSM7_EXT.includes(c));
-
-  if (outside.length) {
-    const len = chars.length;
-    return {
-      encoding: "UCS-2",
-      length: len,
-      segments: len &lt;= 70 ? 1 : Math.ceil(len / 67),
-      forcedBy: [...new Set(outside)]
-    };
-  }
-
-  const len = chars.reduce((n, c) =&gt; n + (GSM7_EXT.includes(c) ? 2 : 1), 0);
-  return {
-    encoding: "GSM-7",
-    length: len,
-    segments: len &lt;= 160 ? 1 : Math.ceil(len / 153),
-    forcedBy: []
-  };
-}
-</code></pre>
-          <p class="code-note" data-en="A 158-character message plus one č is not 159 characters. It is three segments." data-sk="Správa so 158 znakmi plus jedno č nie je 159 znakov. Sú to tri segmenty.">A 158-character message plus one č is not 159 characters. It is three segments.</p>
-        </details>
-      </article>
 
 
-      <article class="case">
-        <span class="where" data-en="Salesforce Marketing Cloud · client engagement" data-sk="Salesforce Marketing Cloud · klientsky projekt">Salesforce Marketing Cloud · client engagement</span>
-        <h3 data-en="The send I stopped" data-sk="Odoslanie, ktoré som zastavil">The send I stopped</h3>
-        <p class="case-lede" data-en="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway." data-sk="Odkaz na dotazník mal ísť ľuďom cez SMS. Odkaz vznikne až vtedy, keď journey vytvorí pozvánku, takže sa musí poskladať v momente odosielania. Napísal som skript aj journey, spustil to — a aj tak som si šiel pozrieť dáta.">A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway.</p>
-
-        <div class="case-blocks">
-          <div>
-            <h4 data-en="How it was built" data-sk="Ako to bolo postavené">How it was built</h4>
-            <p data-en="There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit." data-sk="Na takúto vec sme skript ešte nemali. Pozvánka na dotazník vzniká ako aktivita vnútri journey, takže odkaz sa musí poskladať v AMPscripte až pri stavaní samotnej správy. Skript aj journey som napísal ja; kolega pripravil audience a cieľové dáta. Journey posiela obsah najprv klientovi na poslednú kontrolu a audience až o dve hodiny neskôr, a ide po dávkach, lebo skracovač odkazov má limit.">There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit.</p>
-          </div>
-          <div>
-            <h4 data-en="What went wrong" data-sk="Čo sa pokazilo">What went wrong</h4>
-            <p data-en="Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review." data-sk="Peer review prešlo. Kolega potvrdil, že dáta sú pripravené. Spustil som journey — a aj tak mi to nesedelo, tak som otvoril cieľový dátový extension a pozrel sa sám. Pole, z ktorého sa odkaz skladá, bolo prázdne. Správa by odišla úplne v poriadku: správny text, správni príjemcovia a odkaz na dotazník, ktorý nikam nevedie. A prvé, čo malo ísť von, bol obsah pre klienta na kontrolu.">Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review.</p>
-          </div>
-          <div>
-            <h4 data-en="What I did" data-sk="Čo som spravil">What I did</h4>
-            <p data-en="Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause." data-sk="Zastavil som journey. Kolega nebol pri počítači, tak som prerobil dotaz aj automatizáciu sám a dáta načítal. Potom som napísal peer reviewerovi, čo sa stalo a čo presne treba prekontrolovať — zastavená journey sa nedá len tak rozbehnúť, musela sa postaviť nanovo ako kópia. Odoslanie prebehlo v pôvodnom časovom okne. Klient o pauze nevedel.">Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause.</p>
-          </div>
-          <div>
-            <h4 data-en="What I changed" data-sk="Čo som zmenil">What I changed</h4>
-            <p data-en="I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable." data-sk="Prestal som brať vetu „dáta sú pripravené“ ako kontrolu. Keď ti niekto povie, že dáta sú pripravené, je to hlásenie stavu, nie overenie — nie je to výčitka voči kolegovi, tie dve veci jednoducho nie sú to isté. Personalizované odoslanie dnes nespustím, kým dotaz nepotvrdí samotný cieľ: riadky existujú, personalizačné polia sú vyplnené, žiadne duplicity. Trvá to sekundy a nahrádza to tušenie niečím opakovateľným.">I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable.</p>
-          </div>
-        </div>
-
-        <details class="code">
-          <summary data-en="The pre-flight query" data-sk="Kontrolný dotaz pred spustením">The pre-flight query</summary>
-          <p class="code-note" data-en="Written from scratch for this page. Every row it returns is a reason not to press Start — a clean target returns nothing at all." data-sk="Napísané nanovo pre túto stránku. Každý riadok, ktorý vráti, je dôvod nespúšťať — čistý cieľ nevráti nič.">Written from scratch for this page.</p>
-          <pre><code><span class="c">/*  Pre-flight check for a personalised send.
-    Every row this returns is a reason not to press Start.
-    A clean target returns nothing at all.                        */</span>
-
-WITH target AS (
-    SELECT contact_key,
-           personalisation_id
-    FROM   campaign_target
-)
-
-SELECT 'target is empty'               AS problem,
-       COUNT(*)                        AS affected
-FROM   target
-HAVING COUNT(*) = 0
-
-UNION ALL
-
-SELECT 'personalisation field is null',
-       COUNT(*)
-FROM   target
-WHERE  personalisation_id IS NULL
-HAVING COUNT(*) &gt; 0
-
-UNION ALL
-
-SELECT 'contact appears more than once',
-       COUNT(*)
-FROM   (SELECT contact_key
-        FROM   target
-        GROUP  BY contact_key
-        HAVING COUNT(*) &gt; 1) AS dupes
-HAVING COUNT(*) &gt; 0;
-</code></pre>
-          <p class="code-note" data-en="The branch that would have caught this incident is the middle one. It would have returned a single row." data-sk="Vetva, ktorá by tento incident zachytila, je tá prostredná. Vrátila by jediný riadok.">The branch that would have caught this incident is the middle one.</p>
-        </details>
-      </article>
 
       <div class="works">
+        <article class="work">
+          <span class="where" data-en="IBM Consulting Advantage · internal tool" data-sk="IBM Consulting Advantage · interný nástroj">IBM Consulting Advantage · internal tool</span>
+          <h3>SMS Builder (CZ/SK)</h3>
+          <p  data-en="An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see." data-sk="Asistent, ktorý z ticketu urobí hotový skript na odoslanie SMS — a zachytí to, čo človek nečítajúci po česky ani po slovensky nevidí.">An assistant that turns a campaign ticket into the finished SMS send script — and catches what a reviewer who reads neither Czech nor Slovak cannot see.</p>
+          <p class="stack">AI assistants · AMPscript · SQL · knowledge bases</p>
+          <a class="work-link" href="work/sms-builder/" data-en="Read the case study →" data-sk="Prečítať prípadovku →">Read the case study →</a>
+        </article>
+        <article class="work">
+          <span class="where" data-en="Salesforce Marketing Cloud · client engagement" data-sk="Salesforce Marketing Cloud · klientsky projekt">Salesforce Marketing Cloud · client engagement</span>
+          <h3 data-en="The send I stopped" data-sk="Odoslanie, ktoré som zastavil">The send I stopped</h3>
+          <p  data-en="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway." data-sk="Odkaz na dotazník mal ísť ľuďom cez SMS. Odkaz vznikne až vtedy, keď journey vytvorí pozvánku, takže sa musí poskladať v momente odosielania. Napísal som skript aj journey, spustil to — a aj tak som si šiel pozrieť dáta.">A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway.</p>
+          <p class="stack">Salesforce Marketing Cloud · SQL · AMPscript</p>
+          <a class="work-link" href="work/the-send-i-stopped/" data-en="Read the case study →" data-sk="Prečítať prípadovku →">Read the case study →</a>
+        </article>
         <article class="work">
           <span class="where">U. S. Steel Košice</span>
           <h3 data-en="Energy market reporting tools" data-sk="Nástroje na reporting energetických trhov">Energy market reporting tools</h3>

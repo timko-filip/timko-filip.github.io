@@ -59,7 +59,11 @@
   if (yr) yr.textContent = String(new Date().getFullYear());
 
   /* highlight the section currently in view */
-  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'))
+    .filter(function (a) {
+      /* only same-page anchors; a case-study page links back with ../../#projects */
+      return (a.getAttribute('href') || '').charAt(0) === '#';
+    });
   var byId = {};
   var sections = links.map(function (a) {
     var el = document.querySelector(a.getAttribute('href'));

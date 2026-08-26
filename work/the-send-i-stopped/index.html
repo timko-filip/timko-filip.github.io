@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The send I stopped — Filip Timko</title>
+<meta name="description" content="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the jo">
+<meta property="og:title" content="The send I stopped — Filip Timko">
+<meta property="og:description" content="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the jo">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://timko-filip.github.io/work/the-send-i-stopped/">
+<meta property="og:image" content="https://timko-filip.github.io/assets/img/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://timko-filip.github.io/assets/img/og.png?v=2">
+
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css">
+
+<script>
+  try {
+    if (localStorage.getItem('ft-theme') === 'light') {
+      document.documentElement.setAttribute('data-ft-theme', 'light');
+    }
+  } catch (e) {}
+</script>
+</head>
+<body class="case-page">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="mark" href="../../"><b>Filip Timko</b> — SFMC</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../../#projects" data-en="← Back to the portfolio" data-sk="← Späť na portfólio">← Back to the portfolio</a>
+    </nav>
+    <div class="controls">
+      <div class="langswitch" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">
+          <svg viewBox="0 0 24 16" aria-hidden="true">
+            <clipPath id="fl-uk"><rect width="24" height="16" rx="1"></rect></clipPath>
+            <g clip-path="url(#fl-uk)">
+              <rect width="24" height="16" fill="#012169"></rect>
+              <path d="M0,0 L24,16 M24,0 L0,16" stroke="#FFF" stroke-width="3.4"></path>
+              <path d="M0,0 L24,16 M24,0 L0,16" stroke="#C8102E" stroke-width="1.9"></path>
+              <path d="M12,0 V16 M0,8 H24" stroke="#FFF" stroke-width="5.4"></path>
+              <path d="M12,0 V16 M0,8 H24" stroke="#C8102E" stroke-width="3.2"></path>
+            </g>
+          </svg>
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" data-lang="sk" aria-pressed="false">
+          <svg viewBox="0 0 24 16" aria-hidden="true">
+            <clipPath id="fl-sk"><rect width="24" height="16" rx="1"></rect></clipPath>
+            <g clip-path="url(#fl-sk)">
+              <rect width="24" height="16" fill="#FFF"></rect>
+              <rect y="5.33" width="24" height="5.34" fill="#0B4EA2"></rect>
+              <rect y="10.67" width="24" height="5.33" fill="#EE1C25"></rect>
+              <path d="M4.3,3.1 H10.7 V8.6 C10.7,11.3 7.5,12.9 7.5,12.9 C7.5,12.9 4.3,11.3 4.3,8.6 Z"
+                    fill="#EE1C25" stroke="#FFF" stroke-width="0.75"></path>
+              <path d="M6.9,4.4 H8.1 V10.8 H6.9 Z M5.9,5.9 H9.1 V7.0 H5.9 Z M5.3,7.8 H9.7 V8.9 H5.3 Z"
+                    fill="#FFF"></path>
+              <path d="M4.6,11.4 C5.3,10.2 6.2,10.4 6.5,11.4 C6.8,10.1 8.2,10.1 8.5,11.4 C8.8,10.4 9.7,10.2 10.4,11.4 Z"
+                    fill="#0B4EA2"></path>
+            </g>
+          </svg>
+          <span>SK</span>
+        </button>
+      </div>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"></path>
+        </svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="case-head">
+    <div class="wrap">
+      <span class="where" data-en="Salesforce Marketing Cloud · client engagement" data-sk="Salesforce Marketing Cloud · klientsky projekt">Salesforce Marketing Cloud · client engagement</span>
+      <h1 data-en="The send I stopped" data-sk="Odoslanie, ktoré som zastavil">The send I stopped</h1>
+      <p class="case-lede" data-en="A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway." data-sk="Odkaz na dotazník mal ísť ľuďom cez SMS. Odkaz vznikne až vtedy, keď journey vytvorí pozvánku, takže sa musí poskladať v momente odosielania. Napísal som skript aj journey, spustil to — a aj tak som si šiel pozrieť dáta.">A survey link had to reach people by SMS. The link only exists once the journey has created the invitation, so it has to be assembled at send time. I wrote the script, built the journey, started it — and went to look at the data anyway.</p>
+    </div>
+  </div>
+
+  <section class="case-body">
+    <div class="wrap">
+      <div class="case-blocks">
+          <div>
+            <h4 data-en="How it was built" data-sk="Ako to bolo postavené">How it was built</h4>
+            <p data-en="There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit." data-sk="Na takúto vec sme skript ešte nemali. Pozvánka na dotazník vzniká ako aktivita vnútri journey, takže odkaz sa musí poskladať v AMPscripte až pri stavaní samotnej správy. Skript aj journey som napísal ja; kolega pripravil audience a cieľové dáta. Journey posiela obsah najprv klientovi na poslednú kontrolu a audience až o dve hodiny neskôr, a ide po dávkach, lebo skracovač odkazov má limit.">There was no script for this yet. The survey invitation is created as an activity inside the journey, so the link has to be assembled in AMPscript while the message itself is being built. I wrote the script and the journey; a colleague prepared the audience and the target data. The journey sends the copy to the client for a last look first and to the audience two hours later, and it moves in batches, because the link shortener has a rate limit.</p>
+          </div>
+          <div>
+            <h4 data-en="What went wrong" data-sk="Čo sa pokazilo">What went wrong</h4>
+            <p data-en="Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review." data-sk="Peer review prešlo. Kolega potvrdil, že dáta sú pripravené. Spustil som journey — a aj tak mi to nesedelo, tak som otvoril cieľový dátový extension a pozrel sa sám. Pole, z ktorého sa odkaz skladá, bolo prázdne. Správa by odišla úplne v poriadku: správny text, správni príjemcovia a odkaz na dotazník, ktorý nikam nevedie. A prvé, čo malo ísť von, bol obsah pre klienta na kontrolu.">Peer review passed. My colleague confirmed the data was ready. I started the journey — and it still did not sit right with me, so I opened the target data extension and looked myself. The field the link is built from was empty. The message would have sent perfectly: right text, right recipients, and a survey link that led nowhere. And the first thing due to leave was the copy going to the client for review.</p>
+          </div>
+          <div>
+            <h4 data-en="What I did" data-sk="Čo som spravil">What I did</h4>
+            <p data-en="Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause." data-sk="Zastavil som journey. Kolega nebol pri počítači, tak som prerobil dotaz aj automatizáciu sám a dáta načítal. Potom som napísal peer reviewerovi, čo sa stalo a čo presne treba prekontrolovať — zastavená journey sa nedá len tak rozbehnúť, musela sa postaviť nanovo ako kópia. Odoslanie prebehlo v pôvodnom časovom okne. Klient o pauze nevedel.">Stopped the journey. My colleague was away from his desk, so I reworked the query and the automation myself and loaded the data. Then I wrote to the peer reviewer with what had happened and exactly what needed re-checking — a stopped journey cannot simply be resumed, so it had to be rebuilt as a copy. The send went out inside its original time window. The client never saw a pause.</p>
+          </div>
+          <div>
+            <h4 data-en="What I changed" data-sk="Čo som zmenil">What I changed</h4>
+            <p data-en="I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable." data-sk="Prestal som brať vetu „dáta sú pripravené“ ako kontrolu. Keď ti niekto povie, že dáta sú pripravené, je to hlásenie stavu, nie overenie — nie je to výčitka voči kolegovi, tie dve veci jednoducho nie sú to isté. Personalizované odoslanie dnes nespustím, kým dotaz nepotvrdí samotný cieľ: riadky existujú, personalizačné polia sú vyplnené, žiadne duplicity. Trvá to sekundy a nahrádza to tušenie niečím opakovateľným.">I stopped treating “the data is ready” as a check. Someone telling you the data is ready is a status report, not a verification — that is not a complaint about the colleague, the two things are simply not the same. A personalised send now does not start until a query has confirmed the target itself: rows present, personalisation fields populated, no duplicates. It takes seconds, and it replaces a gut feeling with something repeatable.</p>
+          </div>
+        </div>
+      <details class="code">
+          <summary data-en="The pre-flight query" data-sk="Kontrolný dotaz pred spustením">The pre-flight query</summary>
+          <p class="code-note" data-en="Written from scratch for this page. Every row it returns is a reason not to press Start — a clean target returns nothing at all." data-sk="Napísané nanovo pre túto stránku. Každý riadok, ktorý vráti, je dôvod nespúšťať — čistý cieľ nevráti nič.">Written from scratch for this page.</p>
+          <pre><code><span class="c">/*  Pre-flight check for a personalised send.
+    Every row this returns is a reason not to press Start.
+    A clean target returns nothing at all.                        */</span>
+
+WITH target AS (
+    SELECT contact_key,
+           personalisation_id
+    FROM   campaign_target
+)
+
+SELECT 'target is empty'               AS problem,
+       COUNT(*)                        AS affected
+FROM   target
+HAVING COUNT(*) = 0
+
+UNION ALL
+
+SELECT 'personalisation field is null',
+       COUNT(*)
+FROM   target
+WHERE  personalisation_id IS NULL
+HAVING COUNT(*) &gt; 0
+
+UNION ALL
+
+SELECT 'contact appears more than once',
+       COUNT(*)
+FROM   (SELECT contact_key
+        FROM   target
+        GROUP  BY contact_key
+        HAVING COUNT(*) &gt; 1) AS dupes
+HAVING COUNT(*) &gt; 0;
+</code></pre>
+          <p class="code-note" data-en="The branch that would have caught this incident is the middle one. It would have returned a single row." data-sk="Vetva, ktorá by tento incident zachytila, je tá prostredná. Vrátila by jediný riadok.">The branch that would have caught this incident is the middle one.</p>
+        </details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a class="back" href="../../#projects" data-en="← Back to the portfolio" data-sk="← Späť na portfólio">← Back to the portfolio</a>
+      <span>© <span id="yr">2026</span> Filip Timko</span>
+    </div>
+  </footer>
+</main>
+
+<script src="../../assets/js/main.js" defer></script>
+</body>
+</html>
