@@ -17,6 +17,9 @@ assets/js/main.js             language switch, theme switch, section highlightin
 assets/img/filip.jpg
 assets/img/og.png             1200×630 social preview card
 assets/img/badges/            Salesforce certification badges
+credentials/index.html        every certification and course, in full
+writing/index.html            theses and longer notes
+work/<slug>/index.html        one case study per folder
 ```
 
 No build step, no framework, no dependencies. The only external request is Google Fonts
@@ -39,3 +42,7 @@ No build step, no framework, no dependencies. The only external request is Googl
   render on Windows. Icons that replace a text label keep that label as visually hidden text,
   so screen readers still announce it.
 - **Certifications** link to independent verification rather than showing document scans.
+- **Pages** — the header carries five items: About, Work and Contact are anchors on the front
+  page; Writing and Credentials are their own pages. Sub-pages share the same stylesheet and
+  script, so a change to either applies everywhere. The front page keeps only the current
+  certifications; the full list lives on `/credentials/`.

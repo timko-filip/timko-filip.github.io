@@ -94,7 +94,18 @@
     transition:color .18s,border-color .18s;
   }
   .nav a:hover{color:var(--ink)}
-  .nav a.active{color:var(--amber);border-bottom-color:var(--amber)}
+  .nav a.active,
+  .nav a[aria-current="page"]{color:var(--amber);border-bottom-color:var(--amber)}
+
+  /* "see everything" link that sends a section on to its own page */
+  .sec-more{
+    margin:1.6rem 0 0;font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;
+  }
+  .sec-more a{
+    color:var(--teal);text-decoration:none;border-bottom:1px solid transparent;
+    transition:color .18s,border-color .18s;
+  }
+  .sec-more a:hover{color:var(--amber);border-bottom-color:var(--amber)}
 
   .langswitch{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .lang-btn{
@@ -208,7 +219,7 @@
     object-fit:cover;border:1px solid var(--line);
     box-shadow:0 0 0 5px var(--ring);
   }
-  .thesis-curve{display:block;width:100%;height:auto;margin:0 0 1.3rem;opacity:.75}
+  .thesis-curve{display:block;width:100%;height:auto;margin:0;opacity:.75}
   .thesis-curve .curve{
     fill:none;stroke:var(--amber);stroke-width:1.8;
     stroke-linecap:round;stroke-linejoin:round;
@@ -288,6 +299,20 @@
     font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--amber);margin:0 0 .8rem;
   }
+
+  .job-detail{margin-top:.2rem}
+  .job-detail summary{
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;color:var(--teal);
+    transition:color .18s;
+  }
+  .job-detail summary::-webkit-details-marker{display:none}
+  .job-detail summary::before{
+    content:"+";color:var(--amber);font-size:1rem;line-height:1;width:.7em;
+  }
+  .job-detail[open] summary::before{content:"–"}
+  .job-detail summary:hover{color:var(--ink)}
+  .job-detail ul{margin-top:1rem}
 
   /* ---------- case study ---------- */
   .case{
@@ -461,11 +486,14 @@
     border:1px solid var(--amber);color:var(--amber);
     background:var(--amber-soft);border-radius:2px;padding:.25rem .55rem;
   }
-  .pullquote{
+  .thesis-figure{
+    margin:0;align-self:start;
     border-left:2px solid var(--line);padding-left:1.4rem;
-    color:var(--ink-dim);font-size:.98rem;align-self:start;
   }
-  .pullquote p{margin:0}
+  .thesis-figure figcaption{
+    margin-top:.9rem;color:var(--ink-faint);
+    font-family:var(--mono);font-size:.73rem;line-height:1.6;
+  }
 
   /* ---------- chips ---------- */
   .chipsets{display:flex;flex-direction:column;gap:1.6rem}
