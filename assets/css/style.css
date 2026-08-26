@@ -459,6 +459,26 @@
   }
   .cert .issuer a:hover{color:var(--amber);border-color:var(--amber)}
 
+  /* The credentials page is the full list, so badges get more room there.
+     Square issuer marks are rounded slightly so they sit next to the
+     Salesforce hexagons without looking like pasted screenshots. */
+  .case-page .cert{grid-template-columns:64px 1fr auto}
+  .case-page .cert-badge{width:64px}
+  /* Square issuer marks get rounded corners; the Salesforce badges are
+     transparent hexagons and must stay untouched. */
+  .case-page img.cert-badge:not([src*="mc-engagement"]):not([src*="ai-associate"]){
+    border-radius:6px;
+  }
+
+  /* Three credentials exist only on paper and have no badge to show. Rather
+     than a blank gutter, they get a plain monogram — honest about what it is. */
+  .cert-badge.mono{
+    display:flex;align-items:center;justify-content:center;
+    width:64px;height:64px;border:1px solid var(--line);border-radius:6px;
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;
+    color:var(--ink-faint);background:var(--raised);
+  }
+
   .cert-verify{
     display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;
     margin:1.7rem 0 0;padding-top:1.2rem;border-top:1px solid var(--line-soft);
