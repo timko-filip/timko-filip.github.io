@@ -202,6 +202,8 @@
     text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
   }
   .sec-head::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  /* a second and further group heading on a list page needs air above it */
+  .sec-head.is-later{margin-top:3.4rem}
 
   /* ---------- scope strip ---------- */
   .scope{border-bottom:1px solid var(--line-soft);padding:clamp(2rem,4vw,2.8rem) 0}
