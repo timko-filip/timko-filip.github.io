@@ -289,21 +289,19 @@
     text-transform:uppercase;color:var(--amber);margin:0 0 .8rem;
   }
 
-  .job-fold{border-top:1px solid var(--line-soft);padding:1.4rem 0 0}
-  .job-fold summary{
-    cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;
-    font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--teal);
+  .job-detail{margin-top:.2rem}
+  .job-detail summary{
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;color:var(--teal);
     transition:color .18s;
   }
-  .job-fold summary::-webkit-details-marker{display:none}
-  .job-fold summary::before{
+  .job-detail summary::-webkit-details-marker{display:none}
+  .job-detail summary::before{
     content:"+";color:var(--amber);font-size:1rem;line-height:1;width:.7em;
   }
-  .job-fold[open] summary::before{content:"–"}
-  .job-fold summary:hover{color:var(--ink)}
-  .job-fold .fold-meta{color:var(--ink-faint);letter-spacing:.02em}
-  .job-fold .job{border-top:0;padding:1.6rem 0 0}
-  .job-fold .job + .job{border-top:1px solid var(--line-soft);margin-top:.4rem}
+  .job-detail[open] summary::before{content:"–"}
+  .job-detail summary:hover{color:var(--ink)}
+  .job-detail ul{margin-top:1rem}
 
   /* ---------- case study ---------- */
   .case{
