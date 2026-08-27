@@ -151,11 +151,11 @@
   function readColours(){
     var cs = getComputedStyle(root);
     colours = {
-      line:  cs.getPropertyValue('--line').trim()      || '#22303D',
-      amber: cs.getPropertyValue('--amber').trim()     || '#E39B3C',
-      teal:  cs.getPropertyValue('--teal').trim()      || '#5AA9BC',
-      ground:cs.getPropertyValue('--ground').trim()    || '#0A0E13',
-      faint: cs.getPropertyValue('--ink-faint').trim() || '#63768A'
+      line:  cs.getPropertyValue('--line').trim()      || '#2C313A',
+      amber: cs.getPropertyValue('--accent').trim()    || '#729BFB',
+      teal:  cs.getPropertyValue('--accent-2').trim()  || '#8D9BB8',
+      ground:cs.getPropertyValue('--ground').trim()    || '#15171B',
+      faint: cs.getPropertyValue('--ink-faint').trim() || '#6B7280'
     };
   }
 
@@ -330,4 +330,28 @@
   }).observe(root, {attributes:true, attributeFilter:['data-ft-theme']});
 
   boot();
+})();
+
+/* Sections and work cards fade up into place once, on first arrival in
+   view — hierarchy for a page that is otherwise a long, even scroll.
+   Skipped entirely for reduced-motion visitors and when JS is absent,
+   since [data-reveal] is fully visible by default in the CSS. */
+(function () {
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches || !('IntersectionObserver' in window)) return;
+
+  var targets = Array.prototype.slice.call(
+    document.querySelectorAll('section > .wrap > *, .work, .cell, .case')
+  );
+  targets.forEach(function (el) { el.setAttribute('data-reveal', ''); });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+
+  targets.forEach(function (el) { io.observe(el); });
 })();
