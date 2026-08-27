@@ -1,25 +1,25 @@
 /* Dark is the default identity of this page. The toggle opts into light.
-   One accent hue runs through both themes — a controlled signal blue,
-   not the inert off-white this page used to call "amber". */
+   One accent hue runs through both themes — a warm caramel tan pulled
+   from the portrait's suit and stucco, on a cream/espresso ground. */
   :root{
-    --ground:#15171B;
-    --surface:#1B1E23;
-    --raised:#23272E;
-    --line:#2C313A;
-    --line-soft:#1F232A;
-    --ink:#F3F5F8;
-    --ink-dim:#A9B1BD;
-    --ink-faint:#6B7280;
+    --ground:#1C1712;
+    --surface:#241E17;
+    --raised:#2E271D;
+    --line:#3B3122;
+    --line-soft:#2A2318;
+    --ink:#F2E9DA;
+    --ink-dim:#BBA88F;
+    --ink-faint:#8A7862;
 
-    --accent:#729BFB;
-    --accent-strong:#2F5FD6;
-    --accent-hi:#5580E8;
-    --accent-soft:rgba(114,155,251,.14);
-    --accent-2:#8D9BB8;
-    --on-accent:#F5F8FF;
+    --accent:#D3A567;
+    --accent-strong:#A9793C;
+    --accent-hi:#E2BC85;
+    --accent-soft:rgba(211,165,103,.16);
+    --accent-2:#B5A188;
+    --on-accent:#211A11;
 
-    --topbar-bg:rgba(21,23,27,.82);
-    --ring:rgba(114,155,251,.16);
+    --topbar-bg:rgba(28,23,18,.82);
+    --ring:rgba(211,165,103,.18);
     --shadow:rgba(0,0,0,.45);
     --trace-opacity:.5;
 
@@ -29,28 +29,29 @@
 
     --r-sm:6px;
     --r-md:10px;
+    --r-lg:16px;
   }
 
   :root[data-ft-theme="light"]{
-    --ground:#F7F8FA;
-    --surface:#EDF0F4;
-    --raised:#E3E7ED;
-    --line:#D3D9E1;
-    --line-soft:#E5E9EE;
-    --ink:#15171B;
-    --ink-dim:#4B5563;
-    --ink-faint:#6B7280;
+    --ground:#F8F2E7;
+    --surface:#F0E7D6;
+    --raised:#E7D9C1;
+    --line:#DBC7A4;
+    --line-soft:#EEE2CB;
+    --ink:#251D14;
+    --ink-dim:#6B5A45;
+    --ink-faint:#8A7862;
 
-    --accent:#2653C7;
-    --accent-strong:#2653C7;
-    --accent-hi:#1C3F9E;
-    --accent-soft:rgba(38,83,199,.09);
-    --accent-2:#586886;
-    --on-accent:#FBFCFE;
+    --accent:#8A5A26;
+    --accent-strong:#6E4419;
+    --accent-hi:#79501F;
+    --accent-soft:rgba(138,90,38,.10);
+    --accent-2:#7A6A52;
+    --on-accent:#FBF4E7;
 
-    --topbar-bg:rgba(247,248,250,.86);
-    --ring:rgba(38,83,199,.14);
-    --shadow:rgba(21,23,27,.12);
+    --topbar-bg:rgba(248,242,231,.86);
+    --ring:rgba(138,90,38,.15);
+    --shadow:rgba(37,29,20,.12);
     --trace-opacity:.4;
   }
 
@@ -166,6 +167,24 @@
   .hero-inner{
     position:relative;z-index:2;
     padding:clamp(4rem,10vw,7rem) 0 0;
+    display:grid;grid-template-columns:1.2fr .8fr;
+    align-items:end;gap:clamp(1.5rem,4vw,3rem);
+  }
+
+  .hero-portrait{
+    position:relative;justify-self:end;align-self:end;
+    width:100%;max-width:320px;
+  }
+  .hero-portrait::before{
+    content:"";position:absolute;inset:-10% -14% -6%;z-index:0;
+    background:radial-gradient(closest-side, var(--accent-soft), transparent 74%);
+    filter:blur(10px);
+  }
+  .hero-portrait img{
+    position:relative;z-index:1;
+    display:block;width:100%;height:auto;aspect-ratio:3 / 4;object-fit:cover;object-position:50% 18%;
+    border-radius:var(--r-lg);border:1px solid var(--line-soft);
+    box-shadow:0 24px 40px var(--shadow);
   }
   .eyebrow{
     font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;
@@ -175,7 +194,7 @@
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block}
 
   h1{
-    font-size:clamp(3rem,9.5vw,6.2rem);
+    font-size:clamp(2.75rem,7vw,5.1rem);
     line-height:.98;letter-spacing:-.04em;font-weight:700;
     margin:0;text-wrap:balance;
   }
@@ -581,9 +600,8 @@
   }
 
   @media (max-width:820px){
-    .hero-inner{grid-template-columns:1fr;gap:2rem}
-    .portrait{justify-self:start;order:-1}
-    .portrait img{width:108px;height:108px}
+    .hero-inner{grid-template-columns:1fr;gap:0}
+    .hero-portrait{justify-self:center;max-width:220px;margin-top:2rem}
   }
 
   @media (max-width:760px){
